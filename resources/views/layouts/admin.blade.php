@@ -2,7 +2,8 @@
 <html>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- vendor css -->
-   <link href="assets/css/style.css" rel="stylesheet">
+
+   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
    <link href="assets/css/coreui-chartjs.css" rel="stylesheet">
    <!-- Therichpost JS -->
    <script src="assets/js/coreui.bundle.min.js"></script>
