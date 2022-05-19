@@ -8,8 +8,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
 });
 
