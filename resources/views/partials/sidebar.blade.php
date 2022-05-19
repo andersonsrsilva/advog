@@ -8,7 +8,7 @@
             <svg class="c-sidebar-nav-icon">
                 <use xlink:href="assets/icons/svg/free.svg#cil-home"></use>
             </svg>
-            Dashboard<span class="badge badge-info">NEW</span>
+            Home
         </a>
     </li>
     <li class="c-sidebar-nav-title">Theme</li>
