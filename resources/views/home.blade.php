@@ -614,7 +614,8 @@
                      </tr>
                      <tr>
                         <td class="text-center">
-                           <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div>
+                           <div class="c-avatar">
+                              <img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div>
                         </td>
                         <td>
                            <div>Friderik Dávid</div>
@@ -651,5 +652,15 @@
       </div>
    </div>
 </div>
+
+@push('scripts')
+   <script type="text/javascript">
+      console.log('executing js here..')
+
+   $(document).ready(function(){
+
+   }
+   </script>
+@endpush
 
 @endsection
