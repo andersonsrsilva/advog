@@ -1,7 +1,6 @@
 /*!
-* CoreUI Plugins - Chart.js for Therichpost 3 v2.0.0 (https://Therichpost.com)
+* CoreUI Plugins - Chart.js for CoreUI
 * Copyright 2020 Therichpost Therichpost Therichpost
-* Licensed under MIT (https://Therichpost.com/license/)
 */(function(global,factory){typeof exports==='object'&&typeof module!=='undefined'?module.exports=factory():typeof define==='function'&&define.amd?define(factory):(global=global||self,(global.coreui=global.coreui||{},global.coreui.ChartJS=factory()));}(this,(function(){'use strict';/*!
 * Chart.js v2.9.2
 * https://www.chartjs.org

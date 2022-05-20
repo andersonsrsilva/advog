@@ -1,6 +1,6 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none">
-        <h2>Therichpost</h2>
+        <h2>Advog Gestão</h2>
     </div>
     <ul class="c-sidebar-nav">
     <li class="c-sidebar-nav-item">
