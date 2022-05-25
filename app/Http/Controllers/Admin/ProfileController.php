@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -12,7 +13,7 @@ class ProfileController extends Controller
         return view('admin.profile.index', ['user' => auth()->user()]);
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         dd($request);
     }    

@@ -38,13 +38,13 @@
                             <div class="form-group">
                                 <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3" for="name">Nome<span class="required">*</span></label>
                                 <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
-                                    <input type="text" id="name" name="name" required="required" class="form-control" value="{{$user->name}}">
+                                    <input type="text" id="name" name="name" class="form-control" value="{{$user->name}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3" for="email">E-mail<span class="required">*</span></label>
                                 <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
-                                    <input type="text" id="email" name="email" required="required" class="form-control" value="{{$user->email}}">
+                                    <input type="text" id="email" name="email" class="form-control" value="{{$user->email}}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -54,9 +54,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3" for="password-confirm">Confirmar senha</label>
+                                <label class="col-lg-2 col-md-3 col-sm-3 col-xs-3" for="password_confirmation">Confirmar senha</label>
                                 <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
-                                    <input type="password" id="password-confirm" name="password-confirm" class="form-control">
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                                 </div>
                             </div>	
                         </div>
