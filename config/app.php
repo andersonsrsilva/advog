@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Advog Gestão'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +168,7 @@ return [
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        LaravelLegends\PtBrValidator\ValidatorProvider::class,
 
         /*
          * Application Service Providers...

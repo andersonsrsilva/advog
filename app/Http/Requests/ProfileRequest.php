@@ -15,7 +15,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',                       
+            'email' => 'required|email',                       
             'password' => 'nullable|min:6|confirmed',
             'password_confirmation' => 'nullable|required_with:password|same:password|min:6'
         ];
@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'  => 'description minimum length bla bla bla'
+            //'name.required'  => 'description minimum length bla bla bla'
         ];
     }
 

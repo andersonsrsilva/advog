@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "004acfb384c275b2b1233cfbabb8d42e",
+    "content-hash": "bca5600628d850d24620dcb6916f49b6",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1851,6 +1851,57 @@
                 "source": "https://github.com/LaravelCollective/html"
             },
             "time": "2022-02-08T21:02:54+00:00"
+        },
+        {
+            "name": "laravellegends/pt-br-validator",
+            "version": "9.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelLegends/pt-br-validator.git",
+                "reference": "dd7e0b612e00be500ead7a6aba71e7bcfd72f026"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelLegends/pt-br-validator/zipball/dd7e0b612e00be500ead7a6aba71e7bcfd72f026",
+                "reference": "dd7e0b612e00be500ead7a6aba71e7bcfd72f026",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "phpunit/phpunit": "^8.3 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelLegends\\PtBrValidator\\ValidatorProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelLegends\\PtBrValidator\\": "src/pt-br-validator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wallace de Souza Vizerra",
+                    "email": "wallacemaxters@gmail.com"
+                }
+            ],
+            "description": "Uma biblioteca contendo validações de formatos Brasileiros, para o Laravel",
+            "support": {
+                "issues": "https://github.com/LaravelLegends/pt-br-validator/issues",
+                "source": "https://github.com/LaravelLegends/pt-br-validator/tree/9.0.0"
+            },
+            "time": "2022-02-15T02:42:52+00:00"
         },
         {
             "name": "league/commonmark",
@@ -7225,6 +7276,50 @@
                 }
             ],
             "time": "2021-12-01T16:20:42+00:00"
+        },
+        {
+            "name": "lucascudo/laravel-pt-br-localization",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucascudo/laravel-pt-BR-localization.git",
+                "reference": "99966d8a1c8f537361475e8279f1b02856dce912"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucascudo/laravel-pt-BR-localization/zipball/99966d8a1c8f537361475e8279f1b02856dce912",
+                "reference": "99966d8a1c8f537361475e8279f1b02856dce912",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lucascudo\\LaravelPtBRLocalization\\LaravelPtBRLocalizationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lucascudo\\LaravelPtBRLocalization\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Cascudo",
+                    "email": "lucas.sisau@gmail.com"
+                }
+            ],
+            "description": "Arquivos de linguagem em Português do Brasil (pt-BR) para Laravel >= 5.6",
+            "support": {
+                "issues": "https://github.com/lucascudo/laravel-pt-BR-localization/issues",
+                "source": "https://github.com/lucascudo/laravel-pt-BR-localization/tree/v1.2.2"
+            },
+            "time": "2022-04-13T15:27:24+00:00"
         },
         {
             "name": "maximebf/debugbar",
