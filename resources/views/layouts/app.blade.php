@@ -22,7 +22,8 @@
 
     </head>
     <body class="@yield('body_class')">
-
+        <div id='loader'></div>     
+        
         {{--Page--}}
         @yield('page')
 

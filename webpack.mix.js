@@ -81,6 +81,10 @@ mix.copy([
     'node_modules/gentelella/vendors/bootstrap/dist/fonts',
 ], 'public/assets/admin/fonts');
 
+mix.copy([
+    'resources/assets/images',
+], 'public/assets/images');
+
 
 mix.scripts([
     'node_modules/select2/dist/js/select2.full.js',

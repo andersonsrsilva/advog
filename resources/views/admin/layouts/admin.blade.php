@@ -3,6 +3,8 @@
 @section('body_class','nav-md')
 @section('page')
     <div class="container body">
+        @include('admin.sections.modals')
+
         <div class="main_container">
             @section('header')
                 @include('admin.sections.navigation')

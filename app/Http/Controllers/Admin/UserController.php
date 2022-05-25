@@ -110,9 +110,9 @@ class UserController extends Controller
 
         if($status)
         {
-            return redirect()->route('admin.users')->withFlashSuccess('User Deleted Successfully!');
+            return redirect()->route('admin.users')->withFlashSuccess('Operação realizada com sucesso.');
         }
 
-        return redirect()->route('admin.users')->withFlashDanger('Unable to Delete User!');
+        return redirect()->route('admin.users')->withFlashDanger('Erro ao realizar a operação.');
     }
 }
