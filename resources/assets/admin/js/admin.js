@@ -26,26 +26,22 @@
      
     $("form").submit(function() {
         $('#loader').show();
-        $('#delete').modal('hide');
-        $('#confirm').modal('hide');
+        $('#delete-modal').modal('hide');
+        $('#confirm-modal').modal('hide');
     });
 
-    $('#delete').on('show.bs.modal', function (event) {
+    $('#delete-modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) 
         var recipient = button.data('id')
-        var description = button.data('description')
         var modal = $(this)
         modal.find('.modal-body #modal_id').val(recipient);
-        modal.find('.modal-body #modal_description').html(description);
     });
 
-    $('#confirm').on('show.bs.modal', function (event) {
+    $('#confirm-modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) 
         var recipient = button.data('id')
-        var description = button.data('description')
         var modal = $(this)
         modal.find('.modal-body #modal_id').val(recipient);
-        modal.find('.modal-body #modal_description').html(description);
     });
 
 })(jQuery);
