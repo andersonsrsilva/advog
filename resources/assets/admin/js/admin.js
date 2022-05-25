@@ -44,4 +44,6 @@
         modal.find('.modal-body #modal_id').val(recipient);
     });
 
+
 })(jQuery);
+

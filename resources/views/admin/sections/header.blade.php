@@ -13,8 +13,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li>
-                            <a href="{{ route('logout') }}">
-                                <i class="fa fa-user pull-left"></i>Profile
+                            <a href="{{ route('admin.profile') }}">
+                                <i class="fa fa-user pull-left"></i>Perfil
                             </a>
                             <a href="{{ route('logout') }}">
                                 <i class="fa fa-sign-out pull-left"></i>Sair
