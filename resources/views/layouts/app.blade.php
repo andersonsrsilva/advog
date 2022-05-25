@@ -1,48 +1,38 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/coreui-chartjs.css') }}" rel="stylesheet">
-</head>
-   <body class="c-app">
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @guest
+        {{--CSRF Token--}}
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-            @yield('content')
-             
-        @else
-    
-            @include('partials.sidebar')
+        {{--Title and Meta--}}
+        @meta
 
-            <div class="c-wrapper c-fixed-components">
+        {{--Common App Styles--}}
+        {{ Html::style(mix('assets/app/css/app.css')) }}
 
-                @include('partials.header')
+        {{--Styles--}}
+        @yield('styles')
 
-                <div class="c-body">
-                    <main class="c-main">
-                        <div class="container-fluid">
+        {{--Head--}}
+        @yield('head')
 
-                            @yield('content')
+    </head>
+    <body class="@yield('body_class')">
 
-                        </div>
-                    </main>
+        {{--Page--}}
+        @yield('page')
 
-                    @include('partials.footer')
-                    
-                </div>
-            </div>
+        {{--Common Scripts--}}
+        {{ Html::script(mix('assets/app/js/app.js')) }}
 
-        @endguest
+        {{--Laravel Js Variables--}}
+        @tojs
 
-   </body>
-
-    <script src="{{ asset('assets/js/coreui.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/svgxuse.min.js') }}"></script>
-    <script src="{{ asset('assets/js/coreui-chartjs.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/coreui-utils.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
-    
+        {{--Scripts--}}
+        @yield('scripts')
+    </body>
 </html>

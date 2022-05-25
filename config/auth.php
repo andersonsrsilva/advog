@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Auth\User\User;
+
 return [
 
     /*
@@ -31,13 +33,18 @@ return [
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
-    | Supported: "session"
+    | Supported: "session", "token"
     |
     */
 
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver' => 'token',
             'provider' => 'users',
         ],
     ],
@@ -62,7 +69,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => User::class,
         ],
 
         // 'users' => [
@@ -80,7 +87,7 @@ return [
     | than one user table or model in the application and you want to have
     | separate password reset settings based on the specific user types.
     |
-    | The expire time is the number of minutes that each reset token will be
+    | The expire time is the number of minutes that the reset token should be
     | considered valid. This security feature keeps tokens short-lived so
     | they have less time to be guessed. You may change this as needed.
     |
@@ -91,21 +98,59 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
-            'throttle' => 60,
         ],
     ],
 
     /*
-    |--------------------------------------------------------------------------
-    | Password Confirmation Timeout
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define the amount of seconds before a password confirmation
-    | times out and the user is prompted to re-enter their password via the
-    | confirmation screen. By default, the timeout lasts for three hours.
-    |
-    */
+     * Configurations for the user
+     */
+    'users' => [
+        /*
+         * Whether or not public registration is on
+         */
+        'registration' => env('ENABLE_REGISTRATION', true),
 
-    'password_timeout' => 10800,
+        /*
+         * The role the user is assigned to when they sign up from the frontend, not namespaced
+         */
+        'default_role' => 'authenticated',
 
+        /*
+         * Whether or not the user has to confirm their email when signing up
+         */
+        'confirm_email' => true,
+
+        /*
+         * Whether or not the users email can be changed on the edit profile screen
+         */
+        'change_email' => false,
+    ],
+
+    /**
+     * Configurations for the socialite
+     */
+    'socialite' => [
+
+        /**
+         * Disable social login for roles
+         */
+        'except_roles' => ['administrator'],
+
+        /*
+        * Socialite session variable name
+        * Contains the name of the currently logged in provider in the users session
+        * Makes it so social logins can not change passwords, etc.
+        */
+        'session_name' => 'socialite_provider',
+    ],
+
+    /*
+     * Application captcha specific settings
+     */
+    'captcha' => [
+        /*
+         * Whether the registration captcha is on or off
+         */
+        'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+    ],
 ];
