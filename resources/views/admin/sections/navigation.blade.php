@@ -33,6 +33,12 @@
                             Home
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.customers') }}">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            Clientes
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="menu_section">

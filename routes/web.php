@@ -26,6 +26,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::post('profile', 'ProfileController@update')->name('profile.update');
 
+    Route::get('clientes', 'CustomerController@index')->name('customers');
+    Route::get('clientes/novo', 'CustomerController@new')->name('customers.new');
+
     Route::get('users', 'UserController@index')->name('users');
     Route::get('users/restore', 'UserController@restore')->name('users.restore');
     Route::get('users/{id}/restore', 'UserController@restoreUser')->name('users.restore-user');

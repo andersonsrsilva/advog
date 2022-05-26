@@ -20,7 +20,10 @@
     <div class="col-md-12 col-sm-12">
         <div class="x_panel">
             <div class="x_content">
-                <br />
+                <button class="btn btn-success">
+                    <i class="fa fa-plus"></i> Novo usuário
+                </button>
+                <br /><br />
                 <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
