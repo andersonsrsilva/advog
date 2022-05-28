@@ -11,7 +11,6 @@ bower_components/
 bootstrap/compiled.php
 bootstrap/cache/
 
-storage
 storage/
 storage/debugbar/
 storage/framework/views/
