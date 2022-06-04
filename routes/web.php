@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('clientes', 'CustomerController@index')->name('customers');
     Route::get('clientes/novo', 'CustomerController@new')->name('customers.new');
+    Route::post('clientes/salvar', 'CustomerController@create')->name('customers.create');
 
     Route::get('users', 'UserController@index')->name('users');
     Route::get('users/restore', 'UserController@restore')->name('users.restore');

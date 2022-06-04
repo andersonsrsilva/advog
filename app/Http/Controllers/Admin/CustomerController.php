@@ -20,7 +20,7 @@ class CustomerController extends Controller
 
     public function new()
     {
-        return view('admin.customers.form');
+        return view('admin.customers.create');
     }
 }
 

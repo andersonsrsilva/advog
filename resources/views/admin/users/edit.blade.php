@@ -147,10 +147,10 @@
 
 @section('styles')
     @parent
-    {{ Html::style(mix('assets/admin/css/users/edit.css')) }}
+    {{ Html::style(mix('assets/admin/css/styles.css')) }}
 @endsection
 
 @section('scripts')
     @parent
-    {{ Html::script(mix('assets/admin/js/users/edit.js')) }}
+    {{ Html::script(mix('assets/admin/js/script.js')) }}
 @endsection

@@ -88,12 +88,14 @@ mix.copy([
 
 mix.scripts([
     'node_modules/select2/dist/js/select2.full.js',
+    'node_modules/inputmask/dist/jquery.inputmask.min.js',
     'resources/assets/admin/js/users/edit.js',
-], 'public/assets/admin/js/users/edit.js').version();
+    'resources/assets/admin/js/customers/create.js',
+], 'public/assets/admin/js/script.js').version();
 
 mix.styles([
     'node_modules/select2/dist/css/select2.css',
-], 'public/assets/admin/css/users/edit.css').version();
+], 'public/assets/admin/css/styles.css').version();
 
 mix.scripts([
     'node_modules/gentelella/vendors/Flot/jquery.flot.js',
