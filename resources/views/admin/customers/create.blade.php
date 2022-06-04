@@ -24,16 +24,30 @@
                 <br>
                 {{ Form::open(['route'=>['admin.customers.create'],'method' => 'post','class'=>'']) }}
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nome" name="nome">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">E-mail</label>
+                            <input type="text" class="form-control" id="email" name="email">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="email">E-mail</label>
-                            <input type="text" class="form-control" id="email" name="email">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf">
                         </div>
+                        <div class="form-group col-md-4">
+                            <label for="habilitacao">Habilitação</label>
+                            <input type="text" class="form-control" id="habilitacao" name="habilitacao">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="passaporte">Passaporte</label>
+                            <input type="text" class="form-control" id="passaporte" name="passaporte">
+                        </div>
+                    </div>   
+                    <div class="row">
                         <div class="form-group col-md-4">
                             <label for="tel_residencial">Telefone Residencial</label>
                             <input type="text" class="form-control" id="tel_residencial" name="tel_residencial">
@@ -42,21 +56,7 @@
                             <label for="tel_celular">Telefone celular</label>
                             <input type="text" class="form-control" id="tel_celular" name="tel_celular">
                         </div>
-                    </div>  
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="habilitacao">Habibilitação</label>
-                            <input type="text" class="form-control" id="habilitacao" name="habilitacao">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="passaporte">Passaporte</label>
-                            <input type="text" class="form-control" id="passaporte" name="passaporte">
-                        </div>
-                    </div>                                     
+                    </div>                                   
                     <div class="row">
                         <div class="form-group col-md-2">
                             <label for="cep">CEP</label>
