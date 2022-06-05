@@ -24,7 +24,7 @@ class CityApTableSeeder extends Seeder
         "1600600" => "SANTANA",
         "1600709" => "TARTARUGALZINHO",
         "1600808" => "VITORIA DO JARI"
-     ];
+    ];
         
     public function run()
     {

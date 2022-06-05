@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
          $this->call(CityApTableSeeder::class);
          $this->call(CityAmTableSeeder::class);
          $this->call(CityBaTableSeeder::class);
+         $this->call(CityCeTableSeeder::class);
+         $this->call(CityDfTableSeeder::class);
     }
 }

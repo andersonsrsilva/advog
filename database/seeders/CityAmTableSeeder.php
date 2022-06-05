@@ -70,7 +70,7 @@ class CityAmTableSeeder extends Seeder
         "1304260" => "UARINI",
         "1304302" => "URUCARA",
         "1304401" => "URUCURITUBA"
-     ];
+    ];
         
     public function run()
     {

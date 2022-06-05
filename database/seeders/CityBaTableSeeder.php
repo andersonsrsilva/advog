@@ -425,7 +425,7 @@ class CityBaTableSeeder extends Seeder
         "2933455" => "WANDERLEY",
         "2933505" => "WENCESLAU GUIMARAES",
         "2933604" => "XIQUE-XIQUE"
-     ];
+    ];
         
     public function run()
     {
