@@ -4,16 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-/**
- * Class CreateSocialAccountsTable.
- */
 class CreateSocialAccountsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('social_accounts', function (Blueprint $table) {
@@ -25,9 +17,6 @@ class CreateSocialAccountsTable extends Migration
             $table->string('avatar')->nullable();
             $table->timestamps();
 
-            /*
-            * Add Foreign/Unique/Index
-            */
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -37,11 +26,6 @@ class CreateSocialAccountsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('social_accounts');

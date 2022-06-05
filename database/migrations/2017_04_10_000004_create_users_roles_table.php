@@ -6,23 +6,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersRolesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        /**
-         * User and roles relation table
-         */
         Schema::create('users_roles', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
-            /*
-             * Add Foreign/Unique/Index
-             */
             $table->foreign('user_id', 'foreign_user')
                 ->references('id')
                 ->on('users')
@@ -37,11 +26,6 @@ class CreateUsersRolesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('users_roles', function (Blueprint $table) {
@@ -49,9 +33,6 @@ class CreateUsersRolesTable extends Migration
             $table->dropForeign('foreign_role');
         });
 
-        /*
-         * Drop tables
-         */
         Schema::dropIfExists('users_roles');
     }
 }

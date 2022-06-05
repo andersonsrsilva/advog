@@ -1,4 +1,6 @@
 (function ($) {
+    limpa_formulário_cep();
+
     $('#cpf').inputmask("999.999.999-99");
     $('#cep').inputmask("99.999-999");
 
@@ -17,7 +19,7 @@
         $("#complemento").val("...");
         $('#estado').val("0");
 
-        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
             if (!("erro" in dados)) {
                 $("#endereco").val(dados.logradouro);
                 $("#bairro").val(dados.bairro);
@@ -26,11 +28,9 @@
                 $('#estado').val(dados.uf); 
             } 
             else {                      
-                limpa_formulário_cep();
-                alert('CEP não encontrado.')
+                limpa_formulário_cep();       
             }
         });
-
     }
 
     function limpa_formulário_cep() {

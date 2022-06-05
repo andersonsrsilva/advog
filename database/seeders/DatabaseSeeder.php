@@ -9,15 +9,16 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-         $this->call(UsersSeeder::class);
-         $this->call(RolesSeeder::class);
-         $this->call(UsersRolesSeeder::class);
+        //  $this->call(UsersSeeder::class);
+        //  $this->call(RolesSeeder::class);
+        //  $this->call(UsersRolesSeeder::class);
+         $this->call(UfTableSeeder::class);
+         $this->call(CityAcTableSeeder::class);
+         $this->call(CityAlTableSeeder::class);
+         $this->call(CityApTableSeeder::class);
+         $this->call(CityAmTableSeeder::class);
+         $this->call(CityBaTableSeeder::class);
     }
 }
