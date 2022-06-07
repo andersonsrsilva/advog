@@ -20,7 +20,7 @@
     <div class="col-md-12 col-sm-12">
         <div class="x_panel">
             <div class="x_content">
-                <button class="btn btn-success" onclick="window.location='{{route('admin.customers.new')}}'">
+                <button class="btn btn-success" onclick="window.location='{{route('admin.customers.create')}}'">
                     <i class="fa fa-plus"></i> Novo cliente
                 </button>
                 <br /><br />

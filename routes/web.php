@@ -23,14 +23,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('/', 'AdminController@index')->name('admin');
 
-    Route::get('city/{value}', 'CityController@citiesPerState')->name('citiesPerState');
+    Route::get('city/{state}', 'CityController@citiesPerState')->name('cities.per.state');
 
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::post('profile', 'ProfileController@update')->name('profile.update');
 
     Route::get('clientes', 'CustomerController@index')->name('customers');
-    Route::get('clientes/novo', 'CustomerController@new')->name('customers.new');
-    Route::post('clientes/salvar', 'CustomerController@create')->name('customers.create');
+    Route::get('clientes/novo', 'CustomerController@create')->name('customers.create');
+    Route::post('clientes/salvar', 'CustomerController@store')->name('customers.store');
 
     Route::get('users', 'UserController@index')->name('users');
     Route::get('users/restore', 'UserController@restore')->name('users.restore');

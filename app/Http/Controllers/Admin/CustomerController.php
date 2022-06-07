@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-//use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -18,9 +18,16 @@ class CustomerController extends Controller
         return view('admin.customers.index');
     }
 
-    public function new()
+    public function create()
     {
         return view('admin.customers.create');
     }
+
+    public function store(Request $request)
+    {
+        dd($request);
+    }
+
+    
 }
 
