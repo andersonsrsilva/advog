@@ -12,6 +12,25 @@
         }
     });
 
+    $("#estado").change(function(e){
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
+        });
+        jQuery.ajax({
+            url: "/admin/city/" + $('#estado').val(),
+            method: 'get',
+            success: function(result) {
+                $('#cidade option').remove();
+                $("#cidade").append('<option value="0">-- SELECIONE -- </option>');
+
+                $.each(result, function(index, value){
+                    $("#cidade").append('<option value="' + index + '">' + value  + '</option>');
+                });
+            },
+        });
+    });
+
     function via_cep(cep) {
         $("#endereco").val("...");
         $("#bairro").val("...");

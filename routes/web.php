@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('/', 'AdminController@index')->name('admin');
 
+    Route::get('city/{value}', 'CityController@citiesPerState')->name('citiesPerState');
+
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::post('profile', 'ProfileController@update')->name('profile.update');
 

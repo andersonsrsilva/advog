@@ -84,39 +84,40 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="cidade">Cidade</label>
-                            <input type="text" class="form-control" id="cidade" name="cidade">
+                            <!-- <input type="text" class="form-control" id="cidade" name="cidade"> -->
+                            <select class="form-control" id="cidade"></select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="estado">Estado</label>
                             <select class="form-control" id="estado">
-                                <option value="0">Selecione</option>
-                                <option value="1">Acre</option>
-                                <option value="2">Alagoas</option>
-                                <option value="3">Amapá</option>
-                                <option value="4">Amazonas</option>
-                                <option value="5">Bahia</option>
-                                <option value="6">Ceará</option>
-                                <option value="7">Distrito Federal</option>
+                                <option value="0">-- SELECIONE --</option>
+                                <option value="1">ACRE</option>
+                                <option value="2">ALAGOAS</option>
+                                <option value="3">AMAPÁ</option>
+                                <option value="4">AMAZONAS</option>
+                                <option value="5">BAHIA</option>
+                                <option value="6">CEARÁ</option>
+                                <option value="7">DISTRITO FEDERAL</option>
                                 <option value="8">Espírito Santo</option>
-                                <option value="9">Goiás</option>
-                                <option value="10">Maranhão</option>
-                                <option value="11">Mato Grosso</option>
-                                <option value="12">Mato Grosso do Sul</option>
-                                <option value="13">Minas Gerais</option>
-                                <option value="14">Pará</option>
-                                <option value="15">Paraíba</option>
-                                <option value="16">Paraná</option>
-                                <option value="17">Pernambuco</option>
-                                <option value="18">Piauí</option>
-                                <option value="19">Rio de Janeiro</option>
-                                <option value="20">Rio Grande do Norte</option>
-                                <option value="21">Rio Grande do Sul</option>
-                                <option value="22">Rondônia</option>
-                                <option value="23">Roraima</option>
-                                <option value="24">Santa Catarina</option>
-                                <option value="25">São Paulo</option>
-                                <option value="26">Sergipe</option>
-                                <option value="27">Tocantins</option>
+                                <option value="9">GOIÁS</option>
+                                <option value="10">MARANHÃO</option>
+                                <option value="11">MATO GROSSO</option>
+                                <option value="12">MATO GROSSO DO SUL</option>
+                                <option value="13">MINAS GERAIS</option>
+                                <option value="14">PARÁ</option>
+                                <option value="15">PARAÍBA</option>
+                                <option value="16">PARANÁ</option>
+                                <option value="17">PERNAMBUCO</option>
+                                <option value="18">PIAUÍ</option>
+                                <option value="19">RIO DE JANEIRO</option>
+                                <option value="20">RIO GRANDE DO NORTE</option>
+                                <option value="21">RIO GRANTE DO SUL</option>
+                                <option value="22">RONDÔNIA</option>
+                                <option value="23">RORAIMA</option>
+                                <option value="24">SANTA CATARINA</option>
+                                <option value="25">SÃO PAULO</option>
+                                <option value="26">SERGIPE</option>
+                                <option value="27">TOCANTINS</option>
                             </select>
                         </div>
                     </div>
