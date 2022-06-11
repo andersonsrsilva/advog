@@ -27,4 +27,13 @@ class Customer extends Model
         'uf_id',
     ];
 
+    public function getCpfAttribute($value)
+    {
+        $one = substr($value, 0,3);
+        $two = substr($value, 3,3);
+        $tree = substr($value, 6,3);
+        $four = substr($value, -2);
+        return $one.".".$two.".".$tree."-".$four;
+    }
+
 }

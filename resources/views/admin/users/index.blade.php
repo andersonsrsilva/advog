@@ -51,7 +51,7 @@
                         <td>{{ $user->created_at }}</td>
                         <td>{{ $user->last_login }}</td>
                         <td>
-                            <a class="btn btn-xs btn-primary btn-icon" href="{{ route('admin.users.show', [$user->id]) }}" title="Mostrar">
+                            <a class="btn btn-xs btn-primary btn-icon" href="{{ route('admin.users.show', [$user->id]) }}" title="mostrar">
                                 <i class="fa fa-eye"></i>
                             </a>
                             <a class="btn btn-xs btn-info btn-icon" href="{{ route('admin.users.edit', [$user->id]) }}" title="editar">
@@ -81,7 +81,7 @@
                 <h5 class="modal-title" id="deleteLabel">Confirmação</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
             </div>
-            
+
             <form action="{{ route('admin.users.destroy') }}" method="post">
                 {{method_field('delete')}} {{csrf_field()}}
                 <div class="modal-body">
@@ -104,7 +104,7 @@
                 <h5 class="modal-title" id="confirmLabel">Confirmação</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
             </div>
-            
+
             <form action="{{ route('admin.users.destroy') }}" method="post">
                 {{method_field('post')}} {{csrf_field()}}
                 <div class="modal-body">

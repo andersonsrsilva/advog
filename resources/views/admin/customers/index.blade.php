@@ -24,7 +24,39 @@
                     <i class="fa fa-plus"></i> Novo cliente
                 </button>
                 <br /><br />
-
+                <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>@sortablelink('name', 'Nome', ['page' => $customers->currentPage()])</th>
+                            <th>@sortablelink('cpf', 'CPF', ['page' => $customers->currentPage()])</th>
+                            <th>@sortablelink('email', 'E-mail', ['page' => $customers->currentPage()])</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($customers as $customer)
+                        <tr>
+                            <td>{{ $customer->name }}</td>
+                            <td>{{ $customer->cpf }}</td>
+                            <td>{{ $customer->email }}</td>
+                            <td>
+                                <a class="btn btn-xs btn-primary btn-icon" href="{{ route('admin.customers.show', [$customer->id]) }}" title="mostrar">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-xs btn-info btn-icon" href="{{ route('admin.customers.edit', [$customer->id]) }}" title="editar">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="" class="btn btn-xs btn-danger btn-icon" title="Excluir" data-toggle="modal" data-target="#delete-modal" data-id="{{$customer->id}}">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="pull-right">
+                    {{ $customers->links() }}
+                </div>
             </div>
         </div>
     </div>
@@ -37,8 +69,8 @@
                 <h5 class="modal-title" id="deleteLabel">Confirmação</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
             </div>
-            
-            <form action="{{ route('admin.users.destroy') }}" method="post">
+
+            <form action="{{ route('admin.customers.destroy') }}" method="post">
                 {{method_field('delete')}} {{csrf_field()}}
                 <div class="modal-body">
                     <p>Tem certeza de que deseja excluir?</p>
@@ -60,8 +92,8 @@
                 <h5 class="modal-title" id="confirmLabel">Confirmação</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
             </div>
-            
-            <form action="{{ route('admin.users.destroy') }}" method="post">
+
+            <form action="{{ route('admin.customers.destroy') }}" method="post">
                 {{method_field('post')}} {{csrf_field()}}
                 <div class="modal-body">
                     <p>Confirma a inclusão?</p>

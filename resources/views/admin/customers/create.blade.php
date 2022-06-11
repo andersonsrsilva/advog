@@ -46,7 +46,7 @@
                             <label for="passport">Passaporte</label>
                             <input type="text" class="form-control" id="passport" name="passport"/>
                         </div>
-                    </div>   
+                    </div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="home_phone">Telefone Residencial</label>
@@ -56,7 +56,7 @@
                             <label for="mobile_phone">Telefone celular</label>
                             <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"/>
                         </div>
-                    </div>                                   
+                    </div>
                     <div class="row">
                         <div class="form-group col-md-2">
                             <label for="zip_code">CEP</label>
@@ -86,8 +86,8 @@
                             <label for="city">Cidade</label>
                             <select class="form-control" id="city_select"></select>
                             <input type="text" class="form-control" id="city_input" name="city_input"/>
-                            <input type="hidden" id="ibge_code" name="ibge_code"/>                            
-                        </div>                      
+                            <input type="hidden" id="ibge_code" name="ibge_code"/>
+                        </div>
                         <div class="form-group col-md-4">
                             <label for="state">Estado</label>
                             <select class="form-control" id="state">

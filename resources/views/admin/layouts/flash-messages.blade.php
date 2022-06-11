@@ -37,5 +37,18 @@
             </div>
         </div>
     </div>
+@elseif (session()->get('flash_danger'))
+    <div class="alert-container common-danger-message">
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <div class="alert-description">
+                @if(is_array(json_decode(session()->get('flash_danger'), true)))
+                    {!! implode('', session()->get('flash_danger')->all(':message<br/>')) !!}
+                @else
+                    {!! session()->get('flash_danger') !!}
+                @endif
+            </div>
+        </div>
+    </div>
 @endif
 
