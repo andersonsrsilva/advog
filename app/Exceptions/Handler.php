@@ -9,11 +9,6 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
-    /**
-     * A list of the exception types that should not be reported.
-     *
-     * @var array
-     */
     protected $dontReport = [
         \Illuminate\Auth\AuthenticationException::class,
         \Illuminate\Auth\Access\AuthorizationException::class,
@@ -23,14 +18,6 @@ class Handler extends ExceptionHandler
         \Illuminate\Validation\ValidationException::class,
     ];
 
-    /**
-     * Report or log an exception.
-     *
-     * @param Throwable $exception
-     * @return void
-     *
-     * @throws \Exception
-     */
     public function report(Throwable $exception)
     {
         parent::report($exception);
@@ -39,27 +26,11 @@ class Handler extends ExceptionHandler
         $this->sendReport($exception);
     }
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Throwable $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
-     */
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
     }
 
-    /**
-     * Convert an authentication exception into a response.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Illuminate\Auth\AuthenticationException $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
@@ -69,11 +40,6 @@ class Handler extends ExceptionHandler
         return redirect()->guest(route('login'));
     }
 
-    /**
-     * Send exception report to emails.
-     *
-     * @param $exception
-     */
     protected function sendReport(Throwable $exception)
     {
         if (parent::shouldntReport($exception)) return;

@@ -25,8 +25,8 @@
                 {{ Form::open(['route'=>['admin.customers.store'],'method' => 'post','class'=>'']) }}
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="nome"/>
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="email">E-mail</label>
@@ -39,58 +39,58 @@
                             <input type="text" class="form-control" id="cpf" name="cpf"/>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="habilitacao">Habilitação</label>
-                            <input type="text" class="form-control" id="habilitacao" name="habilitacao"/>
+                            <label for="cnh">Habilitação</label>
+                            <input type="text" class="form-control" id="cnh" name="cnh"/>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="passaporte">Passaporte</label>
-                            <input type="text" class="form-control" id="passaporte" name="passaporte"/>
+                            <label for="passport">Passaporte</label>
+                            <input type="text" class="form-control" id="passport" name="passport"/>
                         </div>
                     </div>   
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="tel_residencial">Telefone Residencial</label>
-                            <input type="text" class="form-control" id="tel_residencial" name="tel_residencial"/>
+                            <label for="home_phone">Telefone Residencial</label>
+                            <input type="text" class="form-control" id="home_phone" name="home_phone"/>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="tel_celular">Telefone celular</label>
-                            <input type="text" class="form-control" id="tel_celular" name="tel_celular"/>
+                            <label for="mobile_phone">Telefone celular</label>
+                            <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"/>
                         </div>
                     </div>                                   
                     <div class="row">
                         <div class="form-group col-md-2">
-                            <label for="cep">CEP</label>
-                            <input type="text" class="form-control" id="cep" name="cep"/>
+                            <label for="zip_code">CEP</label>
+                            <input type="text" class="form-control" id="zip_code" name="zip_code"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="endereco">Endereço</label>
-                            <input type="text" class="form-control" id="endereco" name="endereco"/>
+                            <label for="address">Endereço</label>
+                            <input type="text" class="form-control" id="address" name="address"/>
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="numero">Número</label>
-                            <input type="text" class="form-control" id="numero" name="numero"/>
+                            <label for="number_address">Número</label>
+                            <input type="text" class="form-control" id="number_address" name="number_address"/>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" id="complemento" name="complemento"/>
+                            <label for="other_address">Complemento</label>
+                            <input type="text" class="form-control" id="other_address" name="other_address"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="bairro">Bairro</label>
-                            <input type="text" class="form-control" id="bairro" name="bairro"/>
+                            <label for="district_address">Bairro</label>
+                            <input type="text" class="form-control" id="district_address" name="district_address"/>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="cidade">Cidade</label>
-                            <select class="form-control" id="cidade_select"></select>
-                            <input type="text" class="form-control" id="cidade_input" name="cidade_input"/>
-                            <input type="hidden" id="ibge" name="ibge"/>                            
+                            <label for="city">Cidade</label>
+                            <select class="form-control" id="city_select"></select>
+                            <input type="text" class="form-control" id="city_input" name="city_input"/>
+                            <input type="hidden" id="ibge_code" name="ibge_code"/>                            
                         </div>                      
                         <div class="form-group col-md-4">
-                            <label for="estado">Estado</label>
-                            <select class="form-control" id="estado">
+                            <label for="state">Estado</label>
+                            <select class="form-control" id="state">
                                 <option value="0">-- SELECIONE --</option>
                                 <option value="AC">ACRE</option>
                                 <option value="AL">ALAGOAS</option>

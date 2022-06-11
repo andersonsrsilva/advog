@@ -6,17 +6,17 @@ use App\Models\Auth\Role\Role;
 use App\Models\Auth\User\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Access\User\EloquentUserRepository;
+use App\Repositories\UserRepository;
 use Validator;
 
 class UserController extends Controller
-{   
+{
 
-    protected $repository;
+    protected $userRepository;
 
     public function __construct()
     {
-        $this->repository = new EloquentUserRepository;
+        $this->userRepository = new UserRepository;
     }
 
     public function index(Request $request)
@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function restoreUser($id)
     {
-        $status = $this->repository->restore($id);
+        $status = $this->userRepository->restore($id);
 
         if($status)
         {
@@ -106,7 +106,7 @@ class UserController extends Controller
 
     public function destroy(Request $request)
     {
-        $status = $this->repository->destroy($request->id);
+        $status = $this->userRepository->destroy($request->id);
 
         if($status)
         {

@@ -1,27 +1,18 @@
 <?php namespace App\Repositories;
 
-/**
- * Abstract Class DbRepository
- *
- *@author Anuj Jaha <er.anujjaha@gmail.com>
- * @package App\Repositories
- */
-
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection as SupportCollection;
 
-Abstract class DbRepository
+Abstract class AbstractRepository
 {
-    /**
-     * Destroy Item
-     *
-     * @param string|int $id
-     * @return bool
-     * @throws GeneralException
-     */
+    public function save($entity)
+    {
+        return $this->model->save($entity);
+    }
+
     public function destroy($id)
     {
         if($this->model->where('ID', '=', $id)->delete())
@@ -32,27 +23,11 @@ Abstract class DbRepository
         throw new GeneralException(trans('exceptions.backend.access.delete_error'));
     }
 
-    /**
-     * Select All
-     *
-     * @param string $columns
-     * @param string $order_by
-     * @param string $sort
-     * @return mixed
-     */
     public function selectAll($columns='*', $order_by = 'id', $sort = 'asc')
     {
         return $this->model->select($columns)->orderBy($order_by, $sort)->get();
     }
 
-    /**
-     * Set DateTimeFormat
-     *
-     * @param mixed $input
-     * @param mixed $field
-     * @param string $format
-     * @return bool|string
-     */
     public function setDateTimeFormat($input = null, $field = null, $format = 'Y-m-d')
     {
         if(isset($input[$field]))
@@ -64,18 +39,6 @@ Abstract class DbRepository
         return false;
     }
 
-    /**
-     * Get Records with Offset & Limit
-     *
-     * @param integer $offset
-     * @param integer $limit
-     * @param array $where
-     * @param array $relations
-     * @param null|array $orderBy
-     * @param string $direction
-     * @param \Closure|null $callback
-     * @return mixed
-     */
     public function getRecordsByLimit($offset, $limit, $where = array(), $relations = array(), $orderBy = null, $direction = 'asc', $callback = null)
     {
         $query = $this->model->query();
@@ -103,14 +66,6 @@ Abstract class DbRepository
         return $query->skip($offset)->take($limit)->get();
     }
 
-    /**
-     * Array Sort
-     *
-     * @param array $array
-     * @param string $on
-     * @param int|string $order
-     * @return array
-     */
     public function arraySort($array = array(), $on = '', $order = SORT_ASC)
     {
         $new_array      = [];
@@ -158,12 +113,6 @@ Abstract class DbRepository
         return $new_array;
     }
 
-    /**
-     * Check Record Is Soft Deleted Or Not
-     *
-     * @return mixed
-     * @throws GeneralException
-     */
     public function checkRecordIsSoftDeleteOrNot()
     {
         if(!app()->runningInConsole())

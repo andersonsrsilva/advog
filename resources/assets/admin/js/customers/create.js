@@ -1,39 +1,39 @@
 (function ($) {
-    limpa_formulário_cep();
+    clean_form_zip_code();
 
     $('#cpf').inputmask("999.999.999-99");
-    $('#cep').inputmask("99.999-999");
-    $('#tel_residencial').inputmask("(99) 9999-999");
-    $('#tel_celular').inputmask("(99) 9 9999-999");
+    $('#zip_code').inputmask("99.999-999");
+    $('#home_phone').inputmask("(99) 9999-999");
+    $('#mobile_phone').inputmask("(99) 9 9999-999");
     
-    $('#cidade_input').show();
-    $('#cidade_select').hide();
+    $('#city_input').show();
+    $('#city_select').hide();
 
-    $("#cep").keyup(function() {
-        var cep = $(this).val().replace(/\D/g, '');
-        var validacep = /^[0-9]{8}$/;
-        if(validacep.test(cep)) {
-            via_cep(cep);            
+    $("#zip_code").keyup(function() {
+        var zip = $(this).val().replace(/\D/g, '');
+        var valided_cep = /^[0-9]{8}$/;
+        if(valided_cep.test(zip)) {
+            via_cep(zip);            
         }
     });
 
-    $("#estado").change(function(e){
+    $("#state").change(function(e) {
         e.preventDefault();
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
         });
         jQuery.ajax({
-            url: "/admin/city/" + $('#estado').val(),
+            url: "/admin/city/" + $('#state').val(),
             method: 'get',
             beforeSend: function () { 
                 $('#loader').show();
             },
             success: function(result) {
-                $('#cidade_select option').remove();
-                $("#cidade_select").append('<option value="0">-- SELECIONE -- </option>');
+                $('#city_select option').remove();
+                $("#city_select").append('<option value="0">-- SELECIONE -- </option>');
 
                 $.each(result, function(index, value){
-                    $("#cidade_select").append('<option value="' + index + '">' + value  + '</option>');
+                    $("#city_select").append('<option value="' + index + '">' + value  + '</option>');
                 });
             },
             complete: function() {
@@ -43,39 +43,40 @@
     });
 
     function via_cep(cep) {
+        console.log(cep);
         $('#loader').show();
-        $('#cidade_input').show();
-        $('#cidade_select').hide();    
+        $('#city_input').show();
+        $('#city_select').hide();    
 
-        limpa_formulário_cep();   
+        clean_form_zip_code();   
 
         $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
             if (!("erro" in dados)) {   
-                $("#ibge").val(dados.ibge);
-                $("#endereco").val(dados.logradouro);
-                $("#bairro").val(dados.bairro);
-                $("#cidade_input").val(dados.localidade);
-                $("#complemento").val(dados.complemento);     
-                $('#estado').val(dados.uf); 
+                $("#ibge_code").val(dados.ibge);
+                $("#address").val(dados.logradouro);
+                $("#district_address").val(dados.bairro);
+                $("#city_input").val(dados.localidade);
+                $("#other_address").val(dados.complemento);     
+                $('#state').val(dados.uf); 
             } 
             else {                      
-                $('#cidade_input').hide();
-                $('#cidade_select').show();    
-                $("#cidade_select").append('<option value="0">-- SELECIONE -- </option>');
+                $('#city_input').hide();
+                $('#city_select').show();    
+                $("#city_select").append('<option value="0">-- SELECIONE -- </option>');
             }
             $('#loader').hide();
         });
     }
 
-    function limpa_formulário_cep() {
-        $("#ibge").val("");
-        $("#endereco").val("");
-        $("#numero").val("");
-        $("#complemento").val(""); 
-        $("#bairro").val("");
-        $("#cidade_input").val("");
-        $('#cidade_select option').remove();
-        $('#estado').val("0");
+    function clean_form_zip_code() {
+        $("#ibge_code").val("");
+        $("#address").val("");
+        $("#number_address").val("");
+        $("#other_address").val(""); 
+        $("#district_address").val("");
+        $("#city_input").val("");
+        $('#city_select option').remove();
+        $('#state').val("0");
     }
 
 })(jQuery);
