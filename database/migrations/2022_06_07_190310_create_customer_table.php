@@ -15,7 +15,7 @@ class CreateCustomerTable extends Migration
             $table->string('cpf', 11);
             $table->string('cnh', 30)->nullable();
             $table->string('passport', 30)->nullable();
-            $table->string('home_phone', 10);
+            $table->string('home_phone', 10)->nullable();
             $table->string('mobile_phone', 11);
             $table->string('zip_code', 9);
             $table->string('address', 200);

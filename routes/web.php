@@ -16,9 +16,6 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('password/reset', 'ResetPasswordController@reset');
 });
 
-/**
- * Backend routes
- */
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
 
     Route::get('/', 'AdminController@index')->name('admin');
@@ -31,9 +28,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('clientes', 'CustomerController@index')->name('customers');
     Route::get('clientes/novo', 'CustomerController@create')->name('customers.create');
     Route::post('clientes/salvar', 'CustomerController@store')->name('customers.store');
-    Route::get('clientes/mostrar', 'CustomerController@show')->name('customers.show');
-    Route::get('clientes/{user}/editar', 'UserController@edit')->name('customers.edit');
-    Route::any('clientes/excluir', 'CustomerController@destroy')->name('customers.destroy');
+    Route::get('clientes/{id}', 'CustomerController@show')->name('customers.show');
+    Route::get('clientes/{id}/editar', 'CustomerController@edit')->name('customers.edit');
+    Route::put('clientes/{id}', 'CustomerController@update')->name('customers.update');
+    Route::delete('clientes/excluir', 'CustomerController@destroy')->name('customers.destroy');
 
     Route::get('users', 'UserController@index')->name('users');
     Route::get('users/restore', 'UserController@restore')->name('users.restore');
@@ -42,7 +40,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
     Route::put('users/{user}', 'UserController@update')->name('users.update');
     Route::any('users/destroy', 'UserController@destroy')->name('users.destroy');
-
-
 
 });

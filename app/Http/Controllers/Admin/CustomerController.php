@@ -31,18 +31,38 @@ class CustomerController extends Controller
 
     public function create()
     {
-        return view('admin.customers.create');
+        $customer = new Customer;
+        return view('admin.customers.create')->with(compact('customer'));;
     }
 
-    public function show()
+    public function edit($id)
     {
-        return view('admin.customers.create');
+        $customer = Customer::find($id);
+        return view('admin.customers.edit')->with(compact('customer'));
+    }
+
+    public function show($id)
+    {
+        $customer = Customer::find($id);
+        return view('admin.customers.show')->with(compact('customer'));
+    }
+
+    public function update(Request $request, $id) {
+
     }
 
     public function store(Request $request)
     {
         try {
-            $city = $this->cityRepository->perIbgeCode($request->ibge_code);
+            $ibge_code;
+
+            if(!isset($request->ibge_code)) {
+                $ibge_code = $request->city_select;
+            }else {
+                $ibge_code = $request->ibge_code;
+            }
+
+            $city = $this->cityRepository->perIbgeCode($ibge_code);
             $customer = new Customer;
             $customer->city_id = $city->id;
             $customer->uf_id = $city->uf_id;

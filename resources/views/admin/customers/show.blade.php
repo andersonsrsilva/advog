@@ -1,72 +1,47 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('views.admin.users.show.title', ['name' => $user->name]))
-
 @section('content')
-    <div class="row">
-        <table class="table table-striped table-hover">
-            <tbody>
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_0') }}</th>
-                <td><img src="{{ $user->avatar }}" class="user-profile-image"></td>
-            </tr>
 
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_1') }}</th>
-                <td>{{ $user->name }}</td>
-            </tr>
-
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_2') }}</th>
-                <td>
-                    <a href="mailto:{{ $user->email }}">
-                        {{ $user->email }}
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_3') }}</th>
-                <td>
-                    {{ $user->roles->pluck('name')->implode(',') }}
-                </td>
-            </tr>
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_4') }}</th>
-                <td>
-                    @if($user->active)
-                        <span class="label label-primary">{{ __('views.admin.users.show.active') }}</span>
-                    @else
-                        <span class="label label-danger">{{ __('views.admin.users.show.inactive') }}</span>
-                    @endif
-                </td>
-            </tr>
-
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_5') }}</th>
-                <td>
-                    @if($user->confirmed)
-                        <span class="label label-success">{{ __('views.admin.users.show.confirmed') }}</span>
-                    @else
-                        <span class="label label-warning">{{ __('views.admin.users.show.not_confirmed') }}</span>
-                    @endif</td>
-                </td>
-            </tr>
-
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_6') }}</th>
-                <td>{{ $user->created_at }} ({{ $user->created_at->diffForHumans() }})</td>
-            </tr>
-
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_7') }}</th>
-                <td>{{ $user->updated_at }} ({{ $user->updated_at->diffForHumans() }})</td>
-            </tr>
-
-            <tr>
-                <th>{{ __('views.admin.users.show.table_header_8') }}</th>
-                <td>{{ $user->last_login }} ({{ $user->last_login->diffForHumans() }})</td>
-            </tr>
-            </tbody>
-        </table>
+<div class="page-title">
+    <div class="title_left">
+        <h1 class="h3">Novo cliente</h1>
     </div>
+    <div class="title_right">
+        <div class="pull-right">
+            <ol class="breadcrumb">
+                <li><a href="/admin">Home</a></li>
+                <li><a href="/admin/clientes">clientes</a></li>
+                <li class="active">editar</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <br>
+                {{ Form::model($customer, ['route'=>['admin.customers.store', $customer->id], 'method'=>'patch', 'class'=>'']) }}
+
+                    @include('admin.customers.form')
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <a class="btn btn-primary" href="{{ URL::previous() }}"> Cancelar</a>
+                            <button type="submit" class="btn btn-success"> Salvar</button>
+                        </div>
+                    </div>
+
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('scripts')
+    @parent
+    {{ Html::script(mix('assets/admin/js/script.js')) }}
 @endsection
