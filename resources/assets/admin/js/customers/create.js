@@ -1,8 +1,8 @@
 (function ($) {
     $('#cpf').inputmask("999.999.999-99");
     $('#zip_code').inputmask("99.999-999");
-    $('#home_phone').inputmask("(99) 9999-999");
-    $('#mobile_phone').inputmask("(99) 9 9999-999");
+    $('#home_phone').inputmask("(99) 9999-9999");
+    $('#mobile_phone').inputmask("(99) 9 9999-9999");
 
     $('#city_input').show();
     $('#city_select').hide();

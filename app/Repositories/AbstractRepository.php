@@ -8,9 +8,9 @@ use Illuminate\Support\Collection as SupportCollection;
 
 Abstract class AbstractRepository
 {
-    public function save($entity)
+    public function find($id)
     {
-        return $this->model->save($entity);
+        return $this->model->find($id);
     }
 
     public function destroy($id)
@@ -20,7 +20,7 @@ Abstract class AbstractRepository
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.delete_error'));
+        throw new GeneralException('exceptions.backend.access.delete_error');
     }
 
     public function selectAll($columns='*', $order_by = 'id', $sort = 'asc')

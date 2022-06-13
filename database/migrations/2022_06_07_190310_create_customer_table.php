@@ -25,6 +25,7 @@ class CreateCustomerTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('uf_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('city_id')
             ->references('id')
