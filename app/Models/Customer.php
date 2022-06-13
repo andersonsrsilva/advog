@@ -27,6 +27,11 @@ class Customer extends Model
         'uf_id',
     ];
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     public function getCpfAttribute($value)
     {
         $one = substr($value, 0,3);

@@ -61,13 +61,13 @@
         <label for="city">Cidade<span class="required">*</span></label>
         <input type="hidden" id="ibge_code" name="ibge_code"/>
 
-        {!! Form::text('city_input', old('city_input', $customer->city_input), ['id'=>'city_input', 'class'=>'form-control']) !!}
+        {!! Form::text('city_input', old('city_input', $customer->city->name), ['id'=>'city_input', 'class'=>'form-control']) !!}
         <select class="form-control" id="city_select" name="city_select"></select>
     </div>
     <div class="form-group col-md-4">
-        <label for="state">Estado<span class="required">*</span></label>
+        <label for="uf">Estado<span class="required">*</span></label>
 
-        {!! Form::select('state',[
+        {!! Form::select('uf',[
                 '0'=>'-- SELECIONE --',
                 'AC'=>'ACRE',
                 'AL'=>'ALAGOAS',
@@ -97,7 +97,7 @@
                 'SE'=>'SERGIPE',
                 'TO'=>'TOCANTINS',
             ],
-            old('state', $customer->state),
+            old('state', $customer->city->uf->code),
             ['id'=>'state', 'class'=>'form-control']) !!}
     </div>
 </div>
