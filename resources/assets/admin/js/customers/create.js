@@ -15,13 +15,13 @@
         }
     });
 
-    $("#state").change(function(e) {
+    $("#uf").change(function(e) {
         e.preventDefault();
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
         });
         jQuery.ajax({
-            url: "/admin/city/" + $('#state').val(),
+            url: "/admin/city/" + $('#uf').val(),
             method: 'get',
             beforeSend: function () {
                 $('#loader').show();
@@ -54,7 +54,7 @@
                 $("#district_address").val(dados.bairro);
                 $("#city_input").val(dados.localidade);
                 $("#other_address").val(dados.complemento);
-                $('#state').val(dados.uf);
+                $('#uf').val(dados.uf);
             }
             else {
                 $('#city_input').hide();
@@ -73,7 +73,7 @@
         $("#district_address").val("");
         $("#city_input").val("");
         $('#city_select option').remove();
-        $('#state').val("0");
+        $('#uf').val("0");
     }
 
 })(jQuery);

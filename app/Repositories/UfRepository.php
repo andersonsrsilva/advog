@@ -18,9 +18,7 @@ class UfRepository extends AbstractRepository
 
     public function findStates()
     {
-        Cache::forever('post_1', $post);
         return $this->model->select()->get();
-
     }
 
 }

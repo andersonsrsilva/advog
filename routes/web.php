@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('/', 'AdminController@index')->name('admin');
 
-    Route::get('city/{state}', 'CityController@citiesPerState')->name('cities.per.state');
+    Route::get('city/{uf}', 'CityController@citiesPerUf')->name('cities.per.uf');
 
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::post('profile', 'ProfileController@update')->name('profile.update');
