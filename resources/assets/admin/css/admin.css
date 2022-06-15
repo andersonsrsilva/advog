@@ -79,3 +79,16 @@
   width: 50%;
   text-align: center;
 }
+
+.alert-description-warning {
+    color: #2A3F54;
+}
+
+.alert-description-success {
+    color: #2A3F54;
+}
+
+.alert-description-danger {
+    color: #FFF;
+}
+

@@ -27,7 +27,7 @@ class CustomerRequest extends FormRequest
             // 'other_address' => 'required',
             'district_address' => 'required',
             //'city_id' => 'required',
-            'uf_id' => 'required',
+            //'uf_id' => 'required',
         ];
     }
 

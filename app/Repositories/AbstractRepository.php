@@ -13,20 +13,27 @@ Abstract class AbstractRepository
         return $this->model->find($id);
     }
 
+    public function findAll($columns='*', $order_by = 'id', $sort = 'asc')
+    {
+        return $this->model->select($columns)->orderBy($order_by, $sort)->get();
+    }
+
+    public function save($data)
+    {
+        $data->save();
+    }
+
     public function destroy($id)
     {
-        if($this->model->where('ID', '=', $id)->delete())
+        if($this->model->find($id)->delete())
         {
             return true;
         }
 
-        throw new GeneralException('exceptions.backend.access.delete_error');
+        throw new GeneralException('Erro ao deletar');
     }
 
-    public function selectAll($columns='*', $order_by = 'id', $sort = 'asc')
-    {
-        return $this->model->select($columns)->orderBy($order_by, $sort)->get();
-    }
+
 
     public function setDateTimeFormat($input = null, $field = null, $format = 'Y-m-d')
     {
