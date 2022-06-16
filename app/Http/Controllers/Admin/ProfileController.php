@@ -16,6 +16,6 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         dd($request);
-    }    
+    }
 
 }

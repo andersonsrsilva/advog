@@ -21,7 +21,7 @@
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
         });
         jQuery.ajax({
-            url: "/admin/city/" + $('#uf').val(),
+            url: "/admin/cidade/" + $('#uf').val(),
             method: 'get',
             beforeSend: function () {
                 $('#loader').show();

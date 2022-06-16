@@ -20,10 +20,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('/', 'AdminController@index')->name('admin');
 
-    Route::get('city/{uf}', 'CityController@citiesPerUf')->name('cities.per.uf');
+    Route::get('cidade/{uf}', 'CityController@citiesPerUf')->name('cities.per.uf');
 
-    Route::get('profile', 'ProfileController@index')->name('profile');
-    Route::post('profile', 'ProfileController@update')->name('profile.update');
+    Route::get('perfil', 'ProfileController@index')->name('profile');
+    Route::post('perfil', 'ProfileController@update')->name('profile.update');
 
     Route::get('clientes', 'CustomerController@index')->name('customers');
     Route::get('clientes/novo', 'CustomerController@create')->name('customers.create');
@@ -33,12 +33,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('clientes/{id}', 'CustomerController@update')->name('customers.update');
     Route::delete('clientes/excluir', 'CustomerController@destroy')->name('customers.destroy');
 
-    Route::get('users', 'UserController@index')->name('users');
-    Route::get('users/restore', 'UserController@restore')->name('users.restore');
-    Route::get('users/{id}/restore', 'UserController@restoreUser')->name('users.restore-user');
-    Route::get('users/{user}', 'UserController@show')->name('users.show');
-    Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
-    Route::put('users/{user}', 'UserController@update')->name('users.update');
-    Route::any('users/destroy', 'UserController@destroy')->name('users.destroy');
+    Route::get('usuarios', 'UserController@index')->name('users');
+    Route::get('usuarios/restore', 'UserController@restore')->name('users.restore');
+    Route::get('usuarios/{id}/restore', 'UserController@restoreUser')->name('users.restore-user');
+    Route::get('usuarios/{user}', 'UserController@show')->name('users.show');
+    Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+    Route::put('usuarios/{user}', 'UserController@update')->name('users.update');
+    Route::any('usuarios/excluir', 'UserController@destroy')->name('users.destroy');
 
 });

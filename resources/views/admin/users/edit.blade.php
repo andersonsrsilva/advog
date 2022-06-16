@@ -1,18 +1,16 @@
 @extends('admin.layouts.admin')
 
-@section('title',__('views.admin.users.edit.title', ['name' => $user->name]) )
-
 @section('content')
 
 <div class="page-title">
     <div class="title_left">
-        <h1 class="h3">Editar usuário</h1>
+        <h1 class="h3">{{ $user->name }}</h1>
     </div>
     <div class="title_right">
         <div class="pull-right">
             <ol class="breadcrumb">
                 <li><a href="/admin">Home</a></li>
-                <li><a href="/admin/users">Usuário</a></li>
+                <li><a href="/admin/usuarios">Usuário</a></li>
                 <li class="active">editar</li>
             </ol>
         </div>

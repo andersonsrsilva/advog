@@ -10,7 +10,7 @@
         <div class="pull-right">
             <ol class="breadcrumb">
                 <li><a href="/admin">Home</a></li>
-                <li><a href="/admin/users">Usuário</a></li>
+                <li><a href="/admin/usuarios">Usuário</a></li>
                 <li class="active">ver</li>
             </ol>
         </div>
