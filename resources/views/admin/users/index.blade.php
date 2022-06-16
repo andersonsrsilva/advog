@@ -40,12 +40,12 @@
                     <tr>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->roles->pluck('name')->implode(',') }}</td>
+                        <td>{{ $user->roles->pluck('name')->implode(', ') }}</td>
                         <td>
                             @if($user->active)
-                            <span class="label label-primary">{{ __('views.admin.users.index.active') }}</span>
+                            <span class="label label-primary">Ativo</span>
                             @else
-                            <span class="label label-danger">{{ __('views.admin.users.index.inactive') }}</span>
+                            <span class="label label-danger">Inativo</span>
                             @endif
                         </td>
                         <td>{{ $user->created_at }}</td>

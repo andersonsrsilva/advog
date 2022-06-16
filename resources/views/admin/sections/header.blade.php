@@ -13,16 +13,16 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li>
-                            <a href="{{ route('admin.profile') }}">
+                            {{-- <a href="{{ route('admin.profile') }}">
                                 <i class="fa fa-user pull-left"></i>Perfil
-                            </a>
+                            </a> --}}
                             <a href="{{ route('logout') }}">
                                 <i class="fa fa-sign-out pull-left"></i>Sair
                             </a>
                         </li>
                     </ul>
                 </li>
-<!-- 
+<!--
                 <li role="presentation" class="nav-item dropdown close">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>

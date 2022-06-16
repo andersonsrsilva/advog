@@ -11,7 +11,7 @@
             <ol class="breadcrumb">
                 <li><a href="/admin">Home</a></li>
                 <li><a href="/admin/clientes">clientes</a></li>
-                <li class="active">editar</li>
+                <li class="active">ver</li>
             </ol>
         </div>
     </div>

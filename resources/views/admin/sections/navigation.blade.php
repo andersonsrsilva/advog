@@ -2,7 +2,7 @@
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{ route('admin.admin') }}" class="site_title">
-                <span>{{ config('app.name') }}</span>                
+                <span>{{ config('app.name') }}</span>
             </a>
         </div>
 
@@ -41,17 +41,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="menu_section">
-                <h3>Administração</h3>
-                <ul class="nav side-menu">
-                    <li>
-                        <a href="{{ route('admin.users') }}">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            Usuários
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            @if(auth()->user()->hasRole('administrator'))
+                <div class="menu_section">
+                    <h3>Administração</h3>
+                    <ul class="nav side-menu">
+                        <li>
+                            <a href="{{ route('admin.users') }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                Usuários
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
             <!-- <div class="menu_section">
                 <h3>DEVELOPMENT</h3>
 
