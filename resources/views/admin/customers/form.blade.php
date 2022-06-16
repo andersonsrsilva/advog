@@ -55,7 +55,7 @@
             value="{{$customer->address ?? old('address')}}" {{ $disabled ?? '' }}/>
     </div>
     <div class="form-group col-md-2">
-        <label for="number_address">Número</label>
+        <label for="number_address">Número<span class="required">*</span></label>
         <input type="text" id="number_address" name="number_address" class="form-control"
             value="{{$customer->number_address ?? old('number_address')}}" {{ $disabled ?? '' }}/>
     </div>
@@ -85,7 +85,12 @@
         <label for="uf">Estado<span class="required">*</span></label>
 
         <select class="form-control" id="uf" {{ $disabled ?? '' }}>
-            <option value="">-- Selecione --</option>
+
+            @if (isset($customer->uf_id))
+                <option value="" selected="selected">-- Selecione --</option>
+            @else
+                <option value="">-- Selecione --</option>
+            @endif
 
             @foreach ($uf as $value)
                 <option value="{{ $value->code }}"

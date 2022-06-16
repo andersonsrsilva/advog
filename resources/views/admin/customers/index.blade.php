@@ -37,7 +37,7 @@
                         @foreach($customers as $customer)
                         <tr>
                             <td>{{ $customer->name }}</td>
-                            <td>{{ $customer->cpf }}</td>
+                            <td>{{ $customer->cpfFormated }}</td>
                             <td>{{ $customer->email }}</td>
                             <td>
                                 <a class="btn btn-xs btn-primary btn-icon" href="{{ route('admin.customers.show', [$customer->id]) }}" title="mostrar">

@@ -35,13 +35,13 @@ class Customer extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function getCpfAttribute($value)
+    public function getCpfFormatedAttribute()
     {
-        $one = substr($value, 0,3);
-        $two = substr($value, 3,3);
-        $tree = substr($value, 6,3);
-        $four = substr($value, -2);
-        return $one.".".$two.".".$tree."-".$four;
+        $p1 = substr($this->cpf, 0,3);
+        $p2 = substr($this->cpf, 3,3);
+        $p3 = substr($this->cpf, 6,3);
+        $p4 = substr($this->cpf, -2);
+        return $p1.".".$p2.".".$p3."-".$p4;
     }
 
 }
