@@ -85,14 +85,6 @@ mix.copy([
     'resources/assets/images',
 ], 'public/assets/images');
 
-
-mix.scripts([
-    'node_modules/select2/dist/js/select2.full.js',
-    'node_modules/inputmask/dist/jquery.inputmask.min.js',
-    'resources/assets/admin/js/users/edit.js',
-    'resources/assets/admin/js/customers/create.js',
-], 'public/assets/admin/js/script.js').version();
-
 mix.styles([
     'node_modules/select2/dist/css/select2.css',
 ], 'public/assets/admin/css/styles.css').version();
@@ -103,19 +95,14 @@ mix.scripts([
     'node_modules/gentelella/vendors/Flot/jquery.flot.pie.js',
     'node_modules/gentelella/vendors/Flot/jquery.flot.stack.js',
     'node_modules/gentelella/vendors/Flot/jquery.flot.resize.js',
-
     'node_modules/gentelella/vendors/flot.orderbars/js/jquery.flot.orderBars.js',
     'node_modules/gentelella/vendors/DateJS/build/date.js',
     'node_modules/gentelella/vendors/flot.curvedlines/curvedLines.js',
     'node_modules/gentelella/vendors/flot-spline/js/jquery.flot.spline.min.js',
-
     'node_modules/gentelella/production/js/moment/moment.min.js',
     'node_modules/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js',
-
-
     'node_modules/gentelella/vendors/Chart.js/dist/Chart.js',
     'node_modules/jcarousel/dist/jquery.jcarousel.min.js',
-
     'resources/assets/admin/js/dashboard.js',
 ], 'public/assets/admin/js/dashboard.js').version();
 
@@ -123,3 +110,18 @@ mix.styles([
     'node_modules/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css',
     'resources/assets/admin/css/dashboard.css',
 ], 'public/assets/admin/css/dashboard.css').version();
+
+mix.scripts([
+    'node_modules/inputmask/dist/jquery.inputmask.min.js',
+    'resources/assets/admin/js/users/edit.js',
+], 'public/assets/admin/js/users/edit.js').version();
+
+mix.scripts([
+    'node_modules/inputmask/dist/jquery.inputmask.min.js',
+    'resources/assets/admin/js/customers/create.js',
+], 'public/assets/admin/js/customers/create.js').version();
+
+mix.scripts([
+    'node_modules/inputmask/dist/jquery.inputmask.min.js',
+    'resources/assets/admin/js/customers/edit.js',
+], 'public/assets/admin/js/customers/edit.js').version();

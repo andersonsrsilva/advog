@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class CityDfTableSeeder extends Seeder
 {
-    static $cities = [
+    static array $values = [
         "5300108" => "BRASILIA"
     ];
-        
+
     public function run()
     {
-        foreach (self::$cities as $key => $value) {
+        foreach (self::$values as $key => $value) {
             DB::table('city')->insert([
                 'ibge_code' => $key,
                 'name' => $value,

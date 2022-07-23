@@ -7,8 +7,10 @@
     "/assets/auth/css/auth.css": "/assets/auth/css/auth.css?id=a500d4964db6e3621df3",
     "/assets/admin/js/admin.js": "/assets/admin/js/admin.js?id=44ea74f2d699078b9332",
     "/assets/admin/css/admin.css": "/assets/admin/css/admin.css?id=6ca642a5853d9c801294",
-    "/assets/admin/js/script.js": "/assets/admin/js/script.js?id=a523732ffbd5eb668c9e",
     "/assets/admin/css/styles.css": "/assets/admin/css/styles.css?id=a2194c2626489df39c39",
     "/assets/admin/js/dashboard.js": "/assets/admin/js/dashboard.js?id=237bcf58ace9304b7227",
-    "/assets/admin/css/dashboard.css": "/assets/admin/css/dashboard.css?id=fda3d38486ed4659e735"
+    "/assets/admin/css/dashboard.css": "/assets/admin/css/dashboard.css?id=fda3d38486ed4659e735",
+    "/assets/admin/js/users/edit.js": "/assets/admin/js/users/edit.js?id=6c719c93c9f120067f43",
+    "/assets/admin/js/customers/create.js": "/assets/admin/js/customers/create.js?id=6de4c96d8e8664656234",
+    "/assets/admin/js/customers/edit.js": "/assets/admin/js/customers/edit.js?id=d901e1cdbe8cb0b23f1a"
 }

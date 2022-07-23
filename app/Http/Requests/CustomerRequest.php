@@ -17,7 +17,7 @@ class CustomerRequest extends FormRequest
             'name' => 'required|min:6',
             'email' => 'required',
             'cpf' => 'required|cpf|formato_cpf',
-            'mobile_phone' => 'required|celular|celular_com_ddd',
+            //'mobile_phone' => 'required|celular|celular_com_ddd',
             'address' => 'required',
             'number_address' => 'required',
             'district_address' => 'required',

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class UfTableSeeder extends Seeder
 {
-    static $ufs = [
+    static $values = [
         'AC' => 'Acre',
         'AL' => 'Alagoas',
         'AP' => 'Amapá',
@@ -36,10 +36,10 @@ class UfTableSeeder extends Seeder
         'SE' => 'Sergipe',
         'TO' => 'Tocantins'
     ];
-        
+
     public function run()
     {
-        foreach (self::$ufs as $key => $value) {
+        foreach (self::$values as $key => $value) {
             DB::table('uf')->insert([
                 'code' => $key,
                 'name' => $value

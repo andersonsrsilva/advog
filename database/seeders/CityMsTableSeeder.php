@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class CityMsTableSeeder extends Seeder
 {
-    static $cities = [
+    static array $values = [
         "5000203" => "AGUA CLARA",
         "5000252" => "ALCINOPOLIS",
         "5000609" => "AMAMBAI",
@@ -88,10 +88,10 @@ class CityMsTableSeeder extends Seeder
         "5008305" => "TRES LAGOAS",
         "5008404" => "VICENTINA"
     ];
-        
+
     public function run()
     {
-        foreach (self::$cities as $key => $value) {
+        foreach (self::$values as $key => $value) {
             DB::table('city')->insert([
                 'ibge_code' => $key,
                 'name' => $value,

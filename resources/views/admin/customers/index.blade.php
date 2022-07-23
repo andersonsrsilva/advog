@@ -54,7 +54,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="pull-right">
+                <div class="text-center">
                     {{ $customers->links() }}
                 </div>
             </div>

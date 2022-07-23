@@ -55,21 +55,14 @@
                 $("#city_input").val(dados.localidade);
                 $("#other_address").val(dados.complemento);
                 $('#uf').val(dados.uf);
-                $('#loader').hide();
             }
             else {
                 $('#city_input').hide();
                 $('#city_select').show();
                 $("#city_select").append('<option value="0">-- SELECIONE -- </option>');
-
-                $.each(result, function(index, value){
-                    $("#city_select").append('<option value="' + index + '">' + value  + '</option>');
-                });
-
-                $('#loader').hide();
             }
+            $('#loader').hide();
         });
-        $('#loader').hide();
     }
 
     function clean_form_zip_code() {
