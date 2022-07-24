@@ -1,11 +1,9 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
-use App\Models\Auth\User\User;
 use App\Exceptions\GeneralException;
-use App\Repositories\AbstractRepository;
-use Exception;
+use App\Models\Auth\User\User;
 
 class UserRepository extends AbstractRepository
 {
@@ -19,13 +17,13 @@ class UserRepository extends AbstractRepository
     public function restore($id)
     {
         $user = $this->model->withTrashed()->where('id', $id)->first();
-        
+
         if(isset($user) && isset($user->id))
         {
             $user->restore();
             return true;
         }
-        
+
         throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
     }
 
@@ -45,4 +43,5 @@ class UserRepository extends AbstractRepository
 
         throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
+
 }

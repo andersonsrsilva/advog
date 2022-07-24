@@ -39,6 +39,12 @@
                             Clientes
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.legal-proceeding') }}">
+                            <i class="fa fa-folder" aria-hidden="true"></i>
+                            Processos Judiciais
+                        </a>
+                    </li>
                 </ul>
             </div>
             @if(auth()->user()->hasRole('administrator'))

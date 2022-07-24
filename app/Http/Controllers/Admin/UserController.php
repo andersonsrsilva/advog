@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Auth\Role\Role;
 use App\Models\Auth\User\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 use Validator;
 
 class UserController extends Controller

@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLawsuitTypeActionTable extends Migration
+class CreateLawsuitTypeTable extends Migration
 {
     public function up()
     {
-        Schema::create('lawsuit_type_action', function (Blueprint $table) {
+        Schema::create('lawsuit_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 250);
             $table->softDeletes();
@@ -17,6 +17,6 @@ class CreateLawsuitTypeActionTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('lawsuit_type_action');
+        Schema::dropIfExists('lawsuit_type');
     }
 }

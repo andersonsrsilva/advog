@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Exception;
+use App\Helpers\StringUtils;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
-use Illuminate\Http\Request;
-use App\Repositories\CustomerRepository;
-use App\Repositories\CityRepository;
-use App\Repositories\UfRepository;
 use App\Models\Customer;
-use App\Models\City;
-use App\Helpers\StringUtils;
+use App\Repositories\CityRepository;
+use App\Repositories\CustomerRepository;
+use App\Repositories\UfRepository;
+use Exception;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -30,42 +29,60 @@ class CustomerController extends Controller
 
     public function index()
     {
-        return view('admin.customers.index', ['customers' => Customer::paginate()]);
+        try {
+            return view('admin.customers.index', ['customers' => Customer::paginate()]);
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
     }
 
     public function create()
     {
-        $customer = new Customer;
-        $uf = $this->ufRepository->findStates();
-        return view('admin.customers.create')->with(compact('customer', 'uf'));
+        try {
+            $customer = new Customer;
+            $uf = $this->ufRepository->findStates();
+            return view('admin.customers.create')->with(compact('customer', 'uf'));
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
     }
 
     public function edit($id)
     {
-        $customer = $this->customerRepository->find($id);
-        $uf = $this->ufRepository->findStates();
-        return view('admin.customers.edit')->with(compact('customer', 'uf'));
+        try {
+            $customer = $this->customerRepository->find($id);
+            $uf = $this->ufRepository->findStates();
+            return view('admin.customers.edit')->with(compact('customer', 'uf'));
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
     }
 
     public function show($id)
     {
-        $customer = $this->customerRepository->find($id);
-        $uf = $this->ufRepository->findStates();
-        $disabled = 'disabled';
-        return view('admin.customers.show')->with(compact('customer', 'uf', 'disabled'));
+        try {
+            $customer = $this->customerRepository->find($id);
+            $uf = $this->ufRepository->findStates();
+            $disabled = 'disabled';
+            return view('admin.customers.show')->with(compact('customer', 'uf', 'disabled'));
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
     }
 
     public function destroy(Request $request)
     {
-        $customer = $this->customerRepository->destroy($request->id);
-        return redirect()->route('admin.customers')->withFlashSuccess('Cliente excluido com sucesso.');
+        try {
+            $this->customerRepository->destroy($request->id);
+            return redirect()->route('admin.customers')->withFlashSuccess('Cliente excluido com sucesso.');
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
     }
 
     public function store(CustomerRequest $request)
     {
         try {
-            $ibge_code;
-
             if(!isset($request->ibge_code)) {
                 $ibge_code = $request->city_select;
             }else {
@@ -99,8 +116,6 @@ class CustomerController extends Controller
     public function update(CustomerRequest $request, $id)
     {
         try {
-            $ibge_code;
-
             if(!isset($request->ibge_code)) {
                 $ibge_code = $request->city_select;
             }else {

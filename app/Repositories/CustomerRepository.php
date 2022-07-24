@@ -3,9 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Customer;
-use App\Exceptions\GeneralException;
-use App\Repositories\AbstractRepository;
-use Exception;
 
 class CustomerRepository extends AbstractRepository
 {
@@ -15,7 +12,5 @@ class CustomerRepository extends AbstractRepository
     {
         $this->model = new Customer;
     }
-
-
 
 }

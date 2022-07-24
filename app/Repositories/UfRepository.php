@@ -3,10 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Uf;
-use App\Exceptions\GeneralException;
-use App\Repositories\AbstractRepository;
 use Illuminate\Support\Facades\Cache;
-use Exception;
 
 class UfRepository extends AbstractRepository
 {
