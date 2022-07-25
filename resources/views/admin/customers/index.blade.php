@@ -67,7 +67,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteLabel">Confirmação</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <form action="{{ route('admin.customers.destroy') }}" method="post">
@@ -90,7 +92,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="confirmLabel">Confirmação</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <form action="{{ route('admin.customers.destroy') }}" method="post">

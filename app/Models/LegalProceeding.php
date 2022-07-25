@@ -51,7 +51,7 @@ class LegalProceeding extends Model
 
     public function files()
     {
-        return $this->hasMany(LegalProceedingAtachedFile::class);
+        return $this->hasMany(LegalProceedingAttachedFile::class);
     }
 
 }

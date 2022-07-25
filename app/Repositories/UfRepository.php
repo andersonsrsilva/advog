@@ -14,7 +14,7 @@ class UfRepository extends AbstractRepository
         $this->model = new Uf;
     }
 
-    public function findStates()
+    public function all()
     {
         $uf = Cache::get('uf');
 

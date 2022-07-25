@@ -14,12 +14,9 @@ class LawsuitTypeRepository extends AbstractRepository
         $this->model = new LawsuitType();
     }
 
-    public function lawsuitType()
+    public function all()
     {
-        $lawsuitTypes = DB::table('lawsuit_type')
-            ->orderBy('name')
-            ->pluck('lawsuit_type.name', 'lawsuit_type.id');
-        return $lawsuitTypes;
+        return parent::findAll($columns='*', $order_by = 'name');
     }
 
 }

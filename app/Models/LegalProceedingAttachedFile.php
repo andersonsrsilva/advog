@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LegalProceedingAtachedFile extends Model
+class LegalProceedingAttachedFile extends Model
 {
-    protected $table = 'legal_proceeding_atached_file';
+    protected $table = 'legal_proceeding_attached_file';
 
     protected $fillable = [
         'legal_proceeding_id',

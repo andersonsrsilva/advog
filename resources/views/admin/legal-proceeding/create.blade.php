@@ -4,13 +4,13 @@
 
 <div class="page-title">
     <div class="title_left">
-        <h1 class="h3">Novo cliente</h1>
+        <h1 class="h3">Novo processo judicial</h1>
     </div>
     <div class="title_right">
         <div class="pull-right">
             <ol class="breadcrumb">
                 <li><a href="/admin">Home</a></li>
-                <li><a href="/admin/clientes">clientes</a></li>
+                <li><a href="/admin/legal-proceeding">processo judicial</a></li>
                 <li class="active">novo</li>
             </ol>
         </div>
@@ -22,13 +22,13 @@
         <div class="x_panel">
             <div class="x_content">
                 <br>
-                <form action={{ route ('admin.customers.store') }} method="POST">
+                <form action={{ route ('admin.legal-proceeding.store') }} method="POST">
 
-                    @include('admin.customers.form')
+                    @include('admin.legal-proceeding.form')
 
                     <div class="row">
                         <div class="col-md-6 col-sm-6 offset-md-3">
-                            <a class="btn btn-primary" href="{{ route('admin.customers') }}">Voltar</a>
+                            <a class="btn btn-primary" href="{{ route('admin.legal-proceeding') }}">Voltar</a>
                             <button type="submit" class="btn btn-success"> Salvar</button>
                         </div>
                     </div>
@@ -42,5 +42,5 @@
 
 @section('scripts')
     @parent
-    {{ Html::script(mix('assets/admin/js/customers/create.js')) }}
+    {{ Html::script(mix('assets/admin/js/legal-proceeding/create.js')) }}
 @endsection

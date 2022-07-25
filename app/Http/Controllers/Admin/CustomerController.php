@@ -40,7 +40,7 @@ class CustomerController extends Controller
     {
         try {
             $customer = new Customer;
-            $uf = $this->ufRepository->findStates();
+            $uf = $this->ufRepository->all();
             return view('admin.customers.create')->with(compact('customer', 'uf'));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
@@ -51,7 +51,7 @@ class CustomerController extends Controller
     {
         try {
             $customer = $this->customerRepository->find($id);
-            $uf = $this->ufRepository->findStates();
+            $uf = $this->ufRepository->all();
             return view('admin.customers.edit')->with(compact('customer', 'uf'));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
@@ -62,7 +62,7 @@ class CustomerController extends Controller
     {
         try {
             $customer = $this->customerRepository->find($id);
-            $uf = $this->ufRepository->findStates();
+            $uf = $this->ufRepository->all();
             $disabled = 'disabled';
             return view('admin.customers.show')->with(compact('customer', 'uf', 'disabled'));
         } catch (Exception $e) {

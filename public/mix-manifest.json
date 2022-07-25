@@ -12,5 +12,6 @@
     "/assets/admin/css/dashboard.css": "/assets/admin/css/dashboard.css?id=fda3d38486ed4659e735",
     "/assets/admin/js/users/edit.js": "/assets/admin/js/users/edit.js?id=6c719c93c9f120067f43",
     "/assets/admin/js/customers/create.js": "/assets/admin/js/customers/create.js?id=6de4c96d8e8664656234",
-    "/assets/admin/js/customers/edit.js": "/assets/admin/js/customers/edit.js?id=d901e1cdbe8cb0b23f1a"
+    "/assets/admin/js/customers/edit.js": "/assets/admin/js/customers/edit.js?id=d901e1cdbe8cb0b23f1a",
+    "/assets/admin/js/legal-proceeding/create.js": "/assets/admin/js/legal-proceeding/create.js?id=bcb84532a4d758ae030f"
 }

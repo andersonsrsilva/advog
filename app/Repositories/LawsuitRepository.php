@@ -14,12 +14,9 @@ class LawsuitRepository extends AbstractRepository
         $this->model = new Lawsuit();
     }
 
-    public function lawsuit()
+    public function all()
     {
-        $lawsuits = DB::table('legal-proceeding')
-            ->orderBy('name')
-            ->pluck('legal-proceeding.name', 'legal-proceeding.id');
-        return $lawsuits;
+        return parent::findAll($columns='*', $order_by = 'name');
     }
 
 }
