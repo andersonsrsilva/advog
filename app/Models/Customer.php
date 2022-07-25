@@ -34,6 +34,11 @@ class Customer extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function legalProceedings()
+    {
+        return $this->belongsToMany(LegalProceeding::class);
+    }
+
     public function getCpfFormatedAttribute()
     {
         $p1 = substr($this->cpf, 0,3);

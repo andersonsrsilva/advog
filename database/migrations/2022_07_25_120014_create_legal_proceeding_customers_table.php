@@ -9,7 +9,6 @@ class CreateLegalProceedingCustomersTable extends Migration
     public function up()
     {
         Schema::create('legal_proceeding_customers', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('legal_proceeding_id')->unsigned();
             $table->integer('customer_id')->unsigned();
 
