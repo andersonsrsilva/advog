@@ -21,7 +21,7 @@ class CreateLegalProceedingTable extends Migration
             $table->text('fact_description');
             $table->text('right_description');
             $table->text('order_description');
-            $table->decimal('value', 9, 2);
+            $table->decimal('value_lawsuit', 9, 2);
             $table->text('number_lawsuit');
             $table->text('local_lawsuit');
             $table->timestamps();

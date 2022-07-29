@@ -22,13 +22,15 @@
 
     </head>
     <body class="@yield('body_class')">
-        <div id='loader'></div>     
-        
+        <div id='loader'></div>
+
         {{--Page--}}
         @yield('page')
 
         {{--Common Scripts--}}
         {{ Html::script(mix('assets/app/js/app.js')) }}
+        {{ Html::script('assets/app/plugins/tinymce/tinymce.min.js') }}
+        {{ Html::script('assets/app/plugins/tinymce/tinymce.min.js') }}
 
         {{--Laravel Js Variables--}}
         @tojs

@@ -24,7 +24,7 @@ class LegalProceeding extends Model
         'fact_description',
         'right_description',
         'order_description',
-        'value',
+        'value_lawsuit',
         'number_lawsuit',
         'local_lawsuit'
     ];

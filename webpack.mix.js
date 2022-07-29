@@ -127,6 +127,7 @@ mix.scripts([
 ], 'public/assets/admin/js/customers/edit.js').version();
 
 mix.scripts([
+    'node_modules/jquery-maskmoney/dist/jquery.maskmoney.min.js',
     'node_modules/inputmask/dist/jquery.inputmask.min.js',
     'resources/assets/admin/js/legal-proceeding/create.js',
 ], 'public/assets/admin/js/legal-proceeding/create.js').version();

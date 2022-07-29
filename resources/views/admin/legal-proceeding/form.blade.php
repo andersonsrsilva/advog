@@ -75,12 +75,53 @@
                value="{{old('legal_address_2') ? old('legal_address_2') : $legalProceeding->legal_address_2}}" {{ $disabled ?? '' }}/>
     </div>
 </div>
+<br>
 <div class="row">
     <div class="form-group col-md-12">
         <label for="email">Ação<span class="required">*</span></label>
-        <textarea id="exampleFormControlTextarea1" rows="3" class="form-control" {{ $disabled ?? '' }}>
-            {{old('legal_address_2') ? old('legal_address_2') : $legalProceeding->legal_address_2}}
-        </textarea>
+        <textarea></textarea>
     </div>
 </div>
-
+<br>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="email">Réu<span class="required">*</span></label>
+        <textarea></textarea>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="email">Preliminar<span class="required">*</span></label>
+        <textarea></textarea>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="email">Fato<span class="required">*</span></label>
+        <textarea></textarea>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="email">Do Direito<span class="required">*</span></label>
+        <textarea></textarea>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="email">Dos Pedidos<span class="required">*</span></label>
+        <textarea></textarea>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="form-group col-md-4">
+        <label for="value_lawsuit">Valor da causa<span class="required">*</span></label>
+        <input type="text" id="value_lawsuit" name="value_lawsuit" class="form-control"
+               value="{{old('value_lawsuit') ? old('value_lawsuit') : $legalProceeding->value_lawsuit}}" {{ $disabled ?? '' }}/>
+    </div>
+</div>
