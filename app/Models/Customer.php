@@ -36,7 +36,7 @@ class Customer extends Model
 
     public function legalProceedings()
     {
-        return $this->belongsToMany(LegalProceeding::class);
+        return $this->belongsToMany(LegalProceeding::class, 'legal_proceeding_customers');
     }
 
     public function getCpfFormatedAttribute()

@@ -30,6 +30,7 @@
                             <th>@sortablelink('name', 'Nome', ['page' => $customers->currentPage()])</th>
                             <th>@sortablelink('cpf', 'CPF', ['page' => $customers->currentPage()])</th>
                             <th>@sortablelink('email', 'E-mail', ['page' => $customers->currentPage()])</th>
+                            <th>@sortablelink('mobile_phone', 'Celular', ['page' => $customers->currentPage()])</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@
                             <td>{{ $customer->name }}</td>
                             <td>{{ $customer->cpfFormated }}</td>
                             <td>{{ $customer->email }}</td>
+                            <td>{{ $customer->mobile_phone }}</td>
                             <td>
                                 <a class="btn btn-xs btn-primary btn-icon" href="{{ route('admin.customers.show', [$customer->id]) }}" title="mostrar">
                                     <i class="fa fa-eye"></i>

@@ -28,13 +28,17 @@
                     <thead>
                         <tr>
                             <th>@sortablelink('legal_address_1', 'Nome', ['page' => $legalProceedings->currentPage()])</th>
+                            <th>@sortablelink('number_lawsuit', 'Número do processo', ['page' => $legalProceedings->currentPage()])</th>
+                            <th>@sortablelink('created_at', 'Criado em', ['page' => $legalProceedings->currentPage()])</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($legalProceedings as $legalProceeding)
                         <tr>
-                            <td>{{ $legalProceeding->legal_address_1 }}</td>
+                            <td>{{ $legalProceeding->names }}</td>
+                            <td>{{ $legalProceeding->number_lawsuit }}</td>
+                            <td>{{ $legalProceeding->created_at->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-xs btn-primary btn-icon" href="{{ route('admin.legal-proceeding.show', [$legalProceeding->id]) }}" title="mostrar">
                                     <i class="fa fa-eye"></i>

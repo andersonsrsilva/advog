@@ -12,7 +12,6 @@ class LegalProceeding extends Model
     protected $table = 'legal_proceeding';
 
     protected $fillable = [
-        'name',
         'lawsuit_id',
         'lawsuit_type_id',
         'legal_address_1',
@@ -28,6 +27,17 @@ class LegalProceeding extends Model
         'number_lawsuit',
         'local_lawsuit'
     ];
+
+    public function getNamesAttribute() {
+        $string = "";
+
+        foreach ($this->customers as $customer)
+        {
+            $string .= $customer->name . ", ";
+        }
+
+        return substr($string, 0, strlen($string) - 2);
+    }
 
     public function lawsuit()
     {
@@ -46,7 +56,7 @@ class LegalProceeding extends Model
 
     public function customers()
     {
-        return $this->belongsToMany(Customer::class);
+        return $this->belongsToMany(Customer::class, 'legal_proceeding_customers');
     }
 
     public function files()

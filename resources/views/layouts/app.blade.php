@@ -30,7 +30,6 @@
         {{--Common Scripts--}}
         {{ Html::script(mix('assets/app/js/app.js')) }}
         {{ Html::script('assets/app/plugins/tinymce/tinymce.min.js') }}
-        {{ Html::script('assets/app/plugins/tinymce/tinymce.min.js') }}
 
         {{--Laravel Js Variables--}}
         @tojs
