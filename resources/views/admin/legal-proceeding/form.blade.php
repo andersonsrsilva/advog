@@ -90,13 +90,34 @@
         </select>
     </div>
 </div>
+
+
+
+
 <div class="row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
         <label for="names">Qualificação das partes<span class="required">*</span></label>
-        <input type="text" id="names" name="names" class="form-control"
-               value="{{old('names') ? old('names') : $legalProceeding->names}}" {{ $disabled ?? '' }}/>
+
+        <div class="input-group">
+            <input type="text" id="cpf" name="cpf" class="form-control" maxlength="11">
+            <span class="input-group-btn">
+                <a id="findCustomer" class="btn btn-success" type="button">Buscar</a>
+            </span>
+        </div>
     </div>
 </div>
+<div class="row">
+    <div class="form-group col-md-6">
+        <div id="customers"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
 <br>
 <div class="row">
     <div class="form-group col-md-12">
@@ -153,9 +174,13 @@
 </div>
 <br>
 <div class="row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
         <label for="value_lawsuit">Valor da causa<span class="required">*</span></label>
-        <input type="text" id="value_lawsuit" name="value_lawsuit" class="form-control"
-               value="{{old('value_lawsuit') ? old('value_lawsuit') : number_format($legalProceeding->value_lawsuit, 2, ',', '.')}}" {{ $disabled ?? '' }}/>
+        <div class="input-group">
+            <div class="input-group-addon">R$</div>
+            <input type="text" id="value_lawsuit" name="value_lawsuit" class="form-control"
+                   value="{{old('value_lawsuit') ? old('value_lawsuit') :
+                        number_format($legalProceeding->value_lawsuit, 2, ',', '.')}}" {{ $disabled ?? '' }}/>
+        </div>
     </div>
 </div>

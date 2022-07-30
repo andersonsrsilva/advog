@@ -13,4 +13,9 @@ class CustomerRepository extends AbstractRepository
         $this->model = new Customer;
     }
 
+    public function findPerCpf($cpf)
+    {
+        return $this->model::where('cpf', $cpf)->first();
+    }
+
 }

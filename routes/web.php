@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('clientes/{id}/editar', 'CustomerController@edit')->name('customers.edit');
     Route::put('clientes/{id}', 'CustomerController@update')->name('customers.update');
     Route::delete('clientes/excluir', 'CustomerController@destroy')->name('customers.destroy');
+    Route::get('clientes/cpf/{cpf}', 'CustomerController@findPerCpf')->name('customers.per-cpf');
 
     Route::get('usuarios', 'UserController@index')->name('users');
     Route::get('usuarios/restore', 'UserController@restore')->name('users.restore');

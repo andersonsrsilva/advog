@@ -43,5 +43,5 @@
 
 @section('scripts')
     @parent
-    {{ Html::script(mix('assets/admin/js/customers/edit.js')) }}
+    {{ Html::script(mix('assets/admin/js/legal-proceeding/create.js')) }}
 @endsection
