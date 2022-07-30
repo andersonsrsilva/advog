@@ -59,6 +59,16 @@ class LegalProceedingController extends Controller
     public function edit($id)
     {
         try {
+            $legalProceeding = $this->legalProceedingRepository->find($id);
+            $uf = $this->ufRepository->all();
+            $lawsuits = $this->lawsuitRepository->all();
+            $lawsuitTypes = $this->lawsuitTypeRepository->all();
+            return view('admin.legal-proceeding.show')->with(compact(
+                'legalProceeding',
+                'lawsuits',
+                'lawsuitTypes',
+                'uf',
+            ));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
@@ -67,6 +77,20 @@ class LegalProceedingController extends Controller
     public function show($id)
     {
         try {
+            $legalProceeding = $this->legalProceedingRepository->find($id);
+            $uf = $this->ufRepository->all();
+            $lawsuits = $this->lawsuitRepository->all();
+            $lawsuitTypes = $this->lawsuitTypeRepository->all();
+            $disabled = 'disabled';
+            $blocked =  'disabled';
+            return view('admin.legal-proceeding.show')->with(compact(
+                'disabled',
+                'blocked',
+                'legalProceeding',
+                'lawsuits',
+                'lawsuitTypes',
+                'uf',
+            ));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
@@ -95,5 +119,28 @@ class LegalProceedingController extends Controller
             return back()->withFlashDanger($e->getMessage());
         }
     }
+
+    public function number($id)
+    {
+        try {
+            $legalProceeding = $this->legalProceedingRepository->find($id);
+            $uf = $this->ufRepository->all();
+            $lawsuits = $this->lawsuitRepository->all();
+            $lawsuitTypes = $this->lawsuitTypeRepository->all();
+            $disabled = 'disabled';
+            $showNumber = true;
+            return view('admin.legal-proceeding.show')->with(compact(
+                'disabled',
+                'showNumber',
+                'legalProceeding',
+                'lawsuits',
+                'lawsuitTypes',
+                'uf',
+            ));
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
+    }
+
 
 }

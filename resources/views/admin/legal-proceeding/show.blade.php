@@ -10,7 +10,7 @@
         <div class="pull-right">
             <ol class="breadcrumb">
                 <li><a href="/admin">Home</a></li>
-                <li><a href="/admin/clientes">clientes</a></li>
+                <li><a href="/admin/processos">Processos Judiciais</a></li>
                 <li class="active">ver</li>
             </ol>
         </div>
@@ -23,11 +23,11 @@
             <div class="x_content">
                 <br>
 
-                @include('admin.customers.form')
+                @include('admin.legal-proceeding.form')
 
                 <div class="row">
                     <div class="col-md-6 col-sm-6 offset-md-3">
-                        <a class="btn btn-primary" href="{{route('admin.customers')}}">Voltar</a>
+                        <a class="btn btn-primary" href="{{route('admin.legal-proceeding')}}">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -39,5 +39,5 @@
 
 @section('scripts')
     @parent
-    {{ Html::script(mix('assets/admin/js/script.js')) }}
+    {{ Html::script(mix('assets/admin/js/legal-proceeding/create.js')) }}
 @endsection

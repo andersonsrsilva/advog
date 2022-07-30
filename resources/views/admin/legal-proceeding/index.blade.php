@@ -49,6 +49,9 @@
                                 <a href="" class="btn btn-xs btn-danger btn-icon" title="Excluir" data-toggle="modal" data-target="#delete-modal" data-id="{{$legalProceeding->id}}">
                                     <i class="fa fa-trash"></i>
                                 </a>
+                                <a class="btn btn-xs btn-success btn-icon" href="{{ route('admin.legal-proceeding.number', [$legalProceeding->id]) }}" title="Adicionar número do processo">
+                                    <i class="fa fa-folder"></i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

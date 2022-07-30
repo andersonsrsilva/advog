@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 offset-md-3">
                             <a class="btn btn-primary" href="{{ route('admin.customers') }}">Voltar</a>
-                            <button type="submit" class="btn btn-success"> Salvar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
                 </form>

@@ -151,7 +151,7 @@
             <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                     <a class="btn btn-primary" href="{{ route('admin.users') }}">Voltar</a>
-                    <button type="submit" class="btn btn-success"> Salvar</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         {{ Form::close() }}
