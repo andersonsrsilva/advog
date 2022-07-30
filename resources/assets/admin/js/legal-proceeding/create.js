@@ -1,6 +1,8 @@
 (function ($) {
     //$('#cpf').inputmask("999.999.999-99");
 
+    var idCustomer = 0;
+
     tinymce.init({
         selector: 'textarea',
         height: 350,
@@ -31,8 +33,11 @@
                 if(result) {
                     let value = result.cpf + ' - ' + result.name;
 
-                    $('#customers').append('<input type="text" name="customers[]" ' +
-                        'class="form-control" value="' + value + '" data-id="' + result.id + '" disabled />');
+                    $('#customers').append('<input type="text" name="customers[' + idCustomer + ']" ' +
+                        'class="form-control" value="' + value + '" readonly />');
+
+                    idCustomer += 1;
+                    $("#cpf").val("");
                 }
             },
             error: function (request, status, error) {

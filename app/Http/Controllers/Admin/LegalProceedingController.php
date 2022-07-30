@@ -9,6 +9,7 @@ use App\Repositories\LawsuitTypeRepository;
 use App\Repositories\LegalProceedingAttachedFileRepository;
 use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
+use Illuminate\Http\Request;
 
 class LegalProceedingController extends Controller
 {
@@ -104,15 +105,16 @@ class LegalProceedingController extends Controller
         }
     }
 
-    public function store(CustomerRequest $request)
+    public function store(Request $request)
     {
         try {
+            dd($request);
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
     }
 
-    public function update(CustomerRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
         } catch (Exception $e) {
