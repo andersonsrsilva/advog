@@ -152,8 +152,7 @@ class LegalProceedingController extends Controller
         try {
             $legalProceeding = $this->legalProceedingRepository->find($id);
             $logo = $this->imageLogo('logo.png');
-            $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-                ->loadView('admin.legal-proceeding.pdf', compact('legalProceeding', 'logo'));
+            $pdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding', 'logo'));
 
            //Storage::put('public/epermit.pdf', $pdf->output());
 

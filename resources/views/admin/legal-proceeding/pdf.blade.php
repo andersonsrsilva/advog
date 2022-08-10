@@ -1,9 +1,50 @@
-<h1>Teste PDF</h1>
-<h6>Vara: {{$legalProceeding->local_lawsuit}}</h6>
-<h6>Processo: {{$legalProceeding->lawsuit->name}}</h6>
+<html>
+<head>
+    <style>
+        @page {
+            margin: 100px 25px;
+        }
 
+        header {
+            position: fixed;
+            height: 50px;
+            width: 100%;
+            top: -60px;
+            background-color: #752727;
+            color: white;
+            line-height: 35px;
+        }
 
+        footer {
+            position: fixed;
+            height: 50px;
+            width: 100%;
+            bottom: -60px;
+            background-color: #752727;
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
 
-<img src="{{ $logo }}" />
-
+        #logo {
+            position: relative;
+            top: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{$logo}}" id="logo">
+        Cabeçalho
+    </header>
+    <main>
+        <p>Vara: {{$legalProceeding->local_lawsuit}}</p>
+        <p>Processo: {{$legalProceeding->lawsuit->name}}</p>
+    </main>
+    <footer>
+        Rodapé
+    </footer>
+</body>
+</html>
 
