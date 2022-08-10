@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\GeneralException;
 use App\Models\Customer;
 
 class CustomerRepository extends AbstractRepository
@@ -15,7 +16,14 @@ class CustomerRepository extends AbstractRepository
 
     public function findPerCpf($cpf)
     {
-        return $this->model::where('cpf', $cpf)->first();
+        $customer = $this->model::where('cpf', $cpf)->first();
+
+        if(!isset($customer))
+        {
+            throw new GeneralException('Cliente não encontrado');
+        }
+
+        return $customer;
     }
 
 }

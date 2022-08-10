@@ -31,7 +31,7 @@ class CityRepository extends AbstractRepository
 
         if(!isset($city))
         {
-            throw new GeneralException('Cidade não encontrada.');
+            throw new GeneralException('Cidade não encontrada');
         }
 
         return $city;

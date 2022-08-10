@@ -1,5 +1,7 @@
 @csrf
 
+<input type="hidden" id="id-lawsuit" value="{{$legalProceeding->id}}" />
+
 @isset($showNumber)
     <div class="row" id="processo-vara">
         <div class="form-group col-md-6">
@@ -101,9 +103,10 @@
         <div class="input-group">
             <input type="text" id="cpf" name="cpf" class="form-control" maxlength="11">
             <span class="input-group-btn">
-                <a id="findCustomer" class="btn btn-success" type="button">Buscar</a>
+                <a type="button" id="findCustomer" class="btn btn-success">Buscar</a>
             </span>
         </div>
+        <span id="notFound" class="required"></span>
     </div>
 </div>
 <div class="row">

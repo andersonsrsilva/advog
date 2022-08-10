@@ -18,6 +18,9 @@
 
     $("#findCustomer").on("click", function(e) {
         e.preventDefault();
+
+        $('#notFound').html("");
+
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
         });
@@ -28,20 +31,54 @@
                 $('#loader').show();
             },
             success: function(result) {
-                console.log(result);
+                let value = result.cpf + ' - ' + result.name;
 
-                if(result) {
-                    let value = result.cpf + ' - ' + result.name;
+                $('#customers').append(
+                    '<div class="input-group customers-' + idCustomer + '">' +
+                        '<input type="text" name="customers[' + idCustomer + ']" class="form-control" value="' + value + '" readonly />' +
+                        '<span class="input-group-btn">' +
+                            '<a type="button" class="btn btn-danger" onclick="removeCustomer(' + idCustomer + ')">Remover</a>' +
+                        '</span>' +
+                    '</div>'
+                );
 
-                    $('#customers').append('<input type="text" name="customers[' + idCustomer + ']" ' +
-                        'class="form-control" value="' + value + '" readonly />');
-
-                    idCustomer += 1;
-                    $("#cpf").val("");
-                }
+                idCustomer += 1;
+                $("#cpf").val("");
             },
-            error: function (request, status, error) {
-                console.log(request, status, error);
+            error: function (request) {
+                let err = JSON.parse(request.responseText);
+                $("#cpf").val("");
+                $('#notFound').html(err.message);
+            },
+            complete: function() {
+                $('#loader').hide();
+            }
+        });
+    });
+
+    $("#buildPDF").on("click", function(e) {
+        e.preventDefault();
+
+        jQuery.ajax({
+            url: "/admin/processos/" + $("#id-lawsuit").val() + "/pdf",
+            method: 'get',
+            cache: false,
+            contentType: false,
+            processData: false,
+            xhrFields: {
+                responseType: 'blob'
+            },
+            beforeSend: function () {
+                $('#loader').show();
+            },
+            success: function(result) {
+                let link=document.createElement('a');
+                link.href=window.URL.createObjectURL(result);
+                link.download="PROCESSO_" + $("#id-lawsuit").val() + ".pdf";
+                link.click();
+            },
+            error: function (request) {
+                console.log("Error buildPDF")
             },
             complete: function() {
                 $('#loader').hide();
@@ -50,3 +87,8 @@
     });
 
 })(jQuery);
+
+function removeCustomer($id) {
+    let elements = document.getElementsByClassName("input-group customers-" + $id);
+    while (elements[0]) elements[0].parentNode.removeChild(elements[0])
+}

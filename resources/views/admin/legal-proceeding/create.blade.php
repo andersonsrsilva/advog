@@ -30,6 +30,7 @@
                         <div class="col-md-6 col-sm-6 offset-md-3">
                             <a class="btn btn-primary" href="{{ route('admin.legal-proceeding') }}">Voltar</a>
                             <button type="submit" class="btn btn-success">Salvar</button>
+                            <a id="buildPDF" class="btn btn-dark">Gerar PDF</a>
                         </div>
                     </div>
                 </form>

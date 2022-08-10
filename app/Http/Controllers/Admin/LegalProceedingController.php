@@ -9,7 +9,10 @@ use App\Repositories\LawsuitTypeRepository;
 use App\Repositories\LegalProceedingAttachedFileRepository;
 use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
+use Dompdf\Options;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class LegalProceedingController extends Controller
 {
@@ -64,7 +67,7 @@ class LegalProceedingController extends Controller
             $uf = $this->ufRepository->all();
             $lawsuits = $this->lawsuitRepository->all();
             $lawsuitTypes = $this->lawsuitTypeRepository->all();
-            return view('admin.legal-proceeding.show')->with(compact(
+            return view('admin.legal-proceeding.edit')->with(compact(
                 'legalProceeding',
                 'lawsuits',
                 'lawsuitTypes',
@@ -144,5 +147,21 @@ class LegalProceedingController extends Controller
         }
     }
 
+    public function pdf($id)
+    {
+        try {
+            $legalProceeding = $this->legalProceedingRepository->find($id);
+
+            $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
+                ->loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
+
+           //Storage::put('public/epermit.pdf', $pdf->output());
+
+            return $pdf->stream();
+
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
+    }
 
 }
