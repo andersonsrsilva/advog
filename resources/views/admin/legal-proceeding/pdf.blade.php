@@ -1,5 +1,7 @@
 <html>
 <head>
+    <title></title>
+
     <style>
         @page {
             margin: 100px 25px;
@@ -35,7 +37,7 @@
 </head>
 <body>
     <header>
-        <img src="{{$logo}}" id="logo">
+        <img src="{{$logo}}" id="logo" alt="">
         Cabeçalho
     </header>
     <main>
