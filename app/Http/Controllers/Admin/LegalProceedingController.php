@@ -151,9 +151,9 @@ class LegalProceedingController extends Controller
     {
         try {
             $legalProceeding = $this->legalProceedingRepository->find($id);
-
+            $logo = $this->imageLogo('logo.png');
             $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-                ->loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
+                ->loadView('admin.legal-proceeding.pdf', compact('legalProceeding', 'logo'));
 
            //Storage::put('public/epermit.pdf', $pdf->output());
 
@@ -162,6 +162,13 @@ class LegalProceedingController extends Controller
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
+    }
+
+    private function imageLogo($name) {
+        $path = 'assets/images/' . $name;
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        return 'data:image/' . $type . ';base64,' . base64_encode($data);
     }
 
 }

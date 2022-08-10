@@ -4,6 +4,6 @@
 
 
 
-<img src="{{storage_path('app\public\foto.jpg')}}">
+<img src="{{ $logo }}" />
 
 
