@@ -13,4 +13,6 @@ class LegalProceedingCustomersRepository extends AbstractRepository
         $this->model = new LegalProceedingCustomers();
     }
 
+
+
 }

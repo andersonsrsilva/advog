@@ -26,8 +26,8 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-        <label for="uf">Processo<span class="required">*</span></label>
-        <select class="form-control" id="lawsuit_id" {{ $disabled ?? '' }}>
+        <label for="lawsuit_id">Processo<span class="required">*</span></label>
+        <select class="form-control" id="lawsuit_id" name="lawsuit_id" {{ $disabled ?? '' }}>
             @if (isset($legalProceeding->lawsuit_id))
                 <option value="">-- SELECIONE --</option>
             @else
@@ -44,8 +44,8 @@
         </select>
     </div>
     <div class="form-group col-md-6">
-        <label for="uf">Tipo da ação<span class="required">*</span></label>
-        <select class="form-control" id="lawsuit_type_id" {{ $disabled ?? '' }}>
+        <label for="lawsuit_type_id">Tipo da ação<span class="required">*</span></label>
+        <select class="form-control" id="lawsuit_type_id" name="lawsuit_type_id" {{ $disabled ?? '' }}>
             @if (isset($legalProceeding->lawsuit_type_id))
                 <option value="">-- SELECIONE --</option>
             @else
@@ -54,7 +54,7 @@
 
             @foreach ($lawsuitTypes as $value)
                 <option value="{{ $value->id }}"
-                        @if ($value->id == old('lawsuit_id', $legalProceeding->lawsuit_type_id))
+                        @if ($value->id == old('lawsuit_type_id', $legalProceeding->lawsuit_type_id))
                             selected="selected"
                     @endif
                 >{{ $value->name }}</option>
@@ -75,16 +75,16 @@
     </div>
     <div class="form-group col-md-4">
         <label for="uf_id">Estado<span class="required">*</span></label>
-        <select class="form-control" id="uf_id" {{ $disabled ?? '' }}>
+        <select class="form-control" id="uf_id" name="uf_id" {{ $disabled ?? '' }}>
             @if (isset($legalProceeding->uf_id))
-                <option value="" selected="selected">-- SELECIONE --</option>
+                <option value="">-- SELECIONE --</option>
             @else
                 <option value="" selected="selected">-- SELECIONE --</option>
             @endif
 
             @foreach ($uf as $value)
-                <option value="{{ $value->code }}"
-                        @if ($value->id == old('uf', $legalProceeding->uf_id))
+                <option value="{{ $value->id }}"
+                        @if ($value->id == old('uf_id', $legalProceeding->uf_id))
                             selected="selected"
                     @endif
                 >{{ $value->name }}</option>
@@ -93,15 +93,12 @@
     </div>
 </div>
 
-
-
-
 <div class="row">
     <div class="form-group col-md-3">
         <label for="names">Qualificação das partes<span class="required">*</span></label>
 
         <div class="input-group">
-            <input type="text" id="cpf" name="cpf" class="form-control" maxlength="11">
+            <input type="text" id="cpf" class="form-control" maxlength="11">
             <span class="input-group-btn">
                 <a type="button" id="findCustomer" class="btn btn-success">Buscar</a>
             </span>
@@ -111,15 +108,30 @@
 </div>
 <div class="row">
     <div class="form-group col-md-6">
-        <div id="customers"></div>
+        <div id="customers">
+            @if(!is_null(old('customers')))
+                @foreach(old('customers') as $value)
+                    <div class="input-group customers-{{ $loop->index }}">
+                        <input type="text" name="customers[{{ $loop->index }}]" class="form-control" value="{{ $value }}" readonly="">
+                        <span class="input-group-btn">
+                            <a type="button" class="btn btn-danger" onclick="removeCustomer({{ $loop->index }})">Remover</a>
+                        </span>
+                    </div>
+                @endforeach
+            @endif
+                @if(!is_null($legalProceeding->customers))
+                    @foreach($legalProceeding->customers as $value)
+                        <div class="input-group customers-{{ $loop->index }}">
+                            <input type="text" name="customers[{{ $loop->index }}]" class="form-control" value="{{ $value->cpf }} - {{ $value->name }}" readonly="">
+                            <span class="input-group-btn">
+                            <a type="button" class="btn btn-danger" onclick="removeCustomer({{ $loop->index }})">Remover</a>
+                        </span>
+                        </div>
+                    @endforeach
+                @endif
+        </div>
     </div>
 </div>
-
-
-
-
-
-
 
 <br>
 <div class="row">
@@ -181,7 +193,7 @@
         <label for="value_lawsuit">Valor da causa<span class="required">*</span></label>
         <div class="input-group">
             <div class="input-group-addon">R$</div>
-            <input type="text" id="value_lawsuit" name="value_lawsuit" class="form-control"
+            <input type="text" id="value_lawsuit" name="value_lawsuit" class="form-control" maxlength="18"
                    value="{{old('value_lawsuit') ? old('value_lawsuit') :
                         number_format($legalProceeding->value_lawsuit, 2, ',', '.')}}" {{ $disabled ?? '' }}/>
         </div>

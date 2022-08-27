@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\StringUtils;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LegalProceedingRequest;
+use App\Models\Customer;
 use App\Models\LegalProceeding;
+use App\Models\LegalProceedingCustomers;
+use App\Repositories\CustomerRepository;
 use App\Repositories\LawsuitRepository;
 use App\Repositories\LawsuitTypeRepository;
 use App\Repositories\LegalProceedingAttachedFileRepository;
+use App\Repositories\LegalProceedingCustomersRepository;
 use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
-use Dompdf\Options;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Storage;
 
 class LegalProceedingController extends Controller
 {
     protected $ufRepository;
     protected $lawsuitRepository;
+    protected $customerRepository;
     protected $lawsuitTypeRepository;
     protected $legalProceedingRepository;
+    protected $legalProceedingCustomersRepository;
     protected $legalProceedingAttachedFileRepository;
 
     public function __construct()
@@ -28,8 +34,10 @@ class LegalProceedingController extends Controller
 
         $this->ufRepository = new UfRepository();
         $this->lawsuitRepository = new LawsuitRepository();
+        $this->customerRepository = new CustomerRepository();
         $this->lawsuitTypeRepository = new LawsuitTypeRepository();
         $this->legalProceedingRepository = new LegalProceedingRepository();
+        $this->legalProceedingCustomersRepository = new LegalProceedingCustomersRepository();
         $this->legalProceedingAttachedFileRepository = new LegalProceedingAttachedFileRepository();
     }
 
@@ -108,10 +116,35 @@ class LegalProceedingController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(LegalProceedingRequest $request)
     {
         try {
-            dd($request);
+            $legalProceeding = new LegalProceeding;
+            $legalProceeding->lawsuit_id = $request->lawsuit_id;
+            $legalProceeding->lawsuit_type_id = $request->lawsuit_type_id;
+            $legalProceeding->uf_id = $request->uf_id;
+            $legalProceeding->legal_address_1 = $request->legal_address_1;
+            $legalProceeding->legal_address_2 = $request->legal_address_2;
+            $legalProceeding->lawsuit_description = $request->lawsuit_description;
+            $legalProceeding->defendant_description = $request->defendant_description;
+            $legalProceeding->preliminary_description = $request->preliminary_description;
+            $legalProceeding->fact_description = $request->fact_description;
+            $legalProceeding->right_description = $request->right_description;
+            $legalProceeding->order_description = $request->order_description;
+            $legalProceeding->value_lawsuit = StringUtils::cleanMoney($request->value_lawsuit);
+            $legalProceeding = $this->legalProceedingCustomersRepository->save($legalProceeding);
+
+            foreach ($request->customers as $customer) {
+                $cpf = explode(" ", $customer);
+                $customer = $this->customerRepository->findPerCpf($cpf[0]);
+
+                $legalProceedingCustomers = new LegalProceedingCustomers;
+                $legalProceedingCustomers->legal_proceeding_id = $legalProceeding->id;
+                $legalProceedingCustomers->customer_id = $customer->id;
+                $legalProceedingCustomers->save();
+            }
+
+            return back()->withFlashSuccess('Processo adicionado com sucesso.');
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }

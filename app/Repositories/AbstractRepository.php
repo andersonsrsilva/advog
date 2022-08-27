@@ -21,6 +21,7 @@ Abstract class AbstractRepository
     public function save($data)
     {
         $data->save();
+        return $data;
     }
 
     public function destroy($id)

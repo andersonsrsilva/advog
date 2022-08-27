@@ -1,7 +1,7 @@
 (function ($) {
     //$('#cpf').inputmask("999.999.999-99");
 
-    var idCustomer = 0;
+    var idCustomer = 1000;
 
     tinymce.init({
         selector: 'textarea',
@@ -18,6 +18,11 @@
 
     $("#findCustomer").on("click", function(e) {
         e.preventDefault();
+
+        if(!$("#cpf").val()) {
+            $('#notFound').html("Informe um CPF");
+            return;
+        }
 
         $('#notFound').html("");
 
