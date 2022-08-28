@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\StringUtils;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LegalProceedingRequest;
-use App\Models\Customer;
 use App\Models\LegalProceeding;
 use App\Models\LegalProceedingCustomers;
 use App\Repositories\CustomerRepository;
@@ -17,6 +16,7 @@ use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class LegalProceedingController extends Controller
 {
@@ -132,7 +132,7 @@ class LegalProceedingController extends Controller
             $legalProceeding->right_description = $request->right_description;
             $legalProceeding->order_description = $request->order_description;
             $legalProceeding->value_lawsuit = StringUtils::cleanMoney($request->value_lawsuit);
-            $legalProceeding = $this->legalProceedingCustomersRepository->save($legalProceeding);
+            $legalProceeding = $this->legalProceedingRepository->save($legalProceeding);
 
             foreach ($request->customers as $customer) {
                 $cpf = explode(" ", $customer);
@@ -141,7 +141,7 @@ class LegalProceedingController extends Controller
                 $legalProceedingCustomers = new LegalProceedingCustomers;
                 $legalProceedingCustomers->legal_proceeding_id = $legalProceeding->id;
                 $legalProceedingCustomers->customer_id = $customer->id;
-                $legalProceedingCustomers->save();
+                $this->legalProceedingCustomersRepository->save($legalProceedingCustomers);
             }
 
             return back()->withFlashSuccess('Processo adicionado com sucesso.');
@@ -184,23 +184,30 @@ class LegalProceedingController extends Controller
     {
         try {
             $legalProceeding = $this->legalProceedingRepository->find($id);
-            $logo = $this->imageLogo('logo.png');
-            $pdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding', 'logo'));
 
-           //Storage::put('public/epermit.pdf', $pdf->output());
+            $pdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
 
-            return $pdf->stream();
+            Storage::put('public/epermit.pdf', $pdf->output());
+
+           //return $pdf->stream();
 
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
     }
 
-    private function imageLogo($name) {
-        $path = 'assets/images/' . $name;
+    private function imageLogo() {
+        $path = 'assets/images/logo.png';
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         return 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $path = 'assets/images/logo.png';
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+
     }
 
 }

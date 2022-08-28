@@ -37,7 +37,6 @@
 </head>
 <body>
     <header>
-        <img src="{{$logo}}" id="logo" alt="">
         Cabeçalho
     </header>
     <main>

@@ -119,16 +119,16 @@
                     </div>
                 @endforeach
             @endif
-                @if(!is_null($legalProceeding->customers))
-                    @foreach($legalProceeding->customers as $value)
-                        <div class="input-group customers-{{ $loop->index }}">
-                            <input type="text" name="customers[{{ $loop->index }}]" class="form-control" value="{{ $value->cpf }} - {{ $value->name }}" readonly="">
-                            <span class="input-group-btn">
-                            <a type="button" class="btn btn-danger" onclick="removeCustomer({{ $loop->index }})">Remover</a>
-                        </span>
-                        </div>
-                    @endforeach
-                @endif
+            @if(!is_null($legalProceeding->customers))
+                @foreach($legalProceeding->customers as $value)
+                    <div class="input-group customers-{{ $loop->index }}">
+                        <input type="text" name="customers[{{ $loop->index }}]" class="form-control" value="{{ $value->cpf }} - {{ $value->name }}" readonly="">
+                        <span class="input-group-btn">
+                        <a type="button" class="btn btn-danger" onclick="removeCustomer({{ $loop->index }})">Remover</a>
+                    </span>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>
