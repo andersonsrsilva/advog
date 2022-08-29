@@ -38,6 +38,7 @@
 <body>
     <header>
         Cabeçalho
+        <img src="{{ public_path('assets/images/logo.jpg') }}" id="logo" style="width: 100px; height: 100px">
     </header>
     <main>
         <p>Vara: {{$legalProceeding->local_lawsuit}}</p>

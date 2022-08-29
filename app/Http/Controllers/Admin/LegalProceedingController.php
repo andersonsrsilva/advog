@@ -14,9 +14,9 @@ use App\Repositories\LegalProceedingAttachedFileRepository;
 use App\Repositories\LegalProceedingCustomersRepository;
 use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Storage;
 
 class LegalProceedingController extends Controller
 {
@@ -184,30 +184,21 @@ class LegalProceedingController extends Controller
     {
         try {
             $legalProceeding = $this->legalProceedingRepository->find($id);
+            $dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
 
-            $pdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
+            //Storage::put('public/epermit.pdf', $pdf->output());
 
-            Storage::put('public/epermit.pdf', $pdf->output());
-
-           //return $pdf->stream();
-
+           return $dompdf->stream();
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
     }
 
     private function imageLogo() {
-        $path = 'assets/images/logo.png';
+        $path = 'logo.png';
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         return 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-        $path = 'assets/images/logo.png';
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $data = file_get_contents($path);
-        $logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-
     }
 
 }
