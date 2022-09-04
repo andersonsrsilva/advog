@@ -23,7 +23,7 @@
             <div class="x_content">
                 <br>
 
-                @include('admin.legal-proceeding.form')
+                @include('admin.legal-proceeding.wizard')
 
                 <div class="row">
                     <div class="col-md-6 col-sm-6 offset-md-3">
