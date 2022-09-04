@@ -1,6 +1,7 @@
 {
     "/assets/app/js/app.js": "/assets/app/js/app.js?id=11c05eb286ed576526bf",
     "/assets/app/css/app.css": "/assets/app/css/app.css?id=c495654869785bc3df60",
+    "/assets/admin/css/legal-proceeding/wizard.css": "/assets/admin/css/legal-proceeding/wizard.css?id=1b8bec3eb2f4fa65999c",
     "/assets/auth/css/login.css": "/assets/auth/css/login.css?id=09f287e1983a07bf6585",
     "/assets/auth/css/register.css": "/assets/auth/css/register.css?id=008fce6c8cc17b79a1ad",
     "/assets/auth/css/passwords.css": "/assets/auth/css/passwords.css?id=8ea934fe6fa61220889e",
@@ -13,5 +14,6 @@
     "/assets/admin/js/users/edit.js": "/assets/admin/js/users/edit.js?id=6c719c93c9f120067f43",
     "/assets/admin/js/customers/create.js": "/assets/admin/js/customers/create.js?id=6de4c96d8e8664656234",
     "/assets/admin/js/customers/edit.js": "/assets/admin/js/customers/edit.js?id=d901e1cdbe8cb0b23f1a",
-    "/assets/admin/js/legal-proceeding/create.js": "/assets/admin/js/legal-proceeding/create.js?id=370a61ec18f37dcc0f67"
+    "/assets/admin/js/legal-proceeding/create.js": "/assets/admin/js/legal-proceeding/create.js?id=370a61ec18f37dcc0f67",
+    "/assets/admin/js/legal-proceeding/wizard.js": "/assets/admin/js/legal-proceeding/wizard.js?id=f0973d53e338d86bcf9a"
 }

@@ -1,23 +1,5 @@
 const mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-
-/*
- |--------------------------------------------------------------------------
- | Core
- |--------------------------------------------------------------------------
- |
- */
-
 mix.scripts([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/pace-progress/pace.js',
@@ -28,8 +10,12 @@ mix.scripts([
 mix.styles([
     'node_modules/font-awesome/css/font-awesome.css',
     'node_modules/pace-progress/themes/blue/pace-theme-minimal.css',
-
 ], 'public/assets/app/css/app.css').version();
+
+mix.styles([
+    'node_modules/gentelella/vendors/nprogress/nprogress.css',
+    'node_modules/gentelella/vendors/dropzone/dist/min/dropzone.min.css',
+], 'public/assets/admin/css/legal-proceeding/wizard.css').version();
 
 mix.copy([
     'node_modules/font-awesome/fonts/',
@@ -131,3 +117,12 @@ mix.scripts([
     'node_modules/inputmask/dist/jquery.inputmask.min.js',
     'resources/assets/admin/js/legal-proceeding/create.js',
 ], 'public/assets/admin/js/legal-proceeding/create.js').version();
+
+
+mix.scripts([
+    'node_modules/gentelella/vendors/nprogress/nprogress.js',
+    'node_modules/gentelella/vendors/fastclick/lib/fastclick.js',
+    'node_modules/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js',
+    'node_modules/gentelella/vendors/dropzone/dist/min/dropzone.min.js',
+    'resources/assets/admin/js/legal-proceeding/wizard.js',
+], 'public/assets/admin/js/legal-proceeding/wizard.js').version();

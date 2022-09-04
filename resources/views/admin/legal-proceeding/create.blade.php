@@ -24,7 +24,7 @@
                 <br>
                 <form action={{ route ('admin.legal-proceeding.store') }} method="POST">
 
-                    @include('admin.legal-proceeding.form')
+                    @include('admin.legal-proceeding.wizard')
 
                     <div class="row">
                         <div class="col-md-6 col-sm-6 offset-md-3">

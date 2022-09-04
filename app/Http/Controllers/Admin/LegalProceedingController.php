@@ -6,6 +6,7 @@ use App\Helpers\StringUtils;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LegalProceedingRequest;
 use App\Models\LegalProceeding;
+use App\Models\LegalProceedingAttachedFile;
 use App\Models\LegalProceedingCustomers;
 use App\Repositories\CustomerRepository;
 use App\Repositories\LawsuitRepository;
@@ -14,7 +15,6 @@ use App\Repositories\LegalProceedingAttachedFileRepository;
 use App\Repositories\LegalProceedingCustomersRepository;
 use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
-use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -57,11 +57,15 @@ class LegalProceedingController extends Controller
             $uf = $this->ufRepository->all();
             $lawsuits = $this->lawsuitRepository->all();
             $lawsuitTypes = $this->lawsuitTypeRepository->all();
+            $title = "Novo processo judicial";
+            $breadcrumb = "novo";
             return view('admin.legal-proceeding.create')->with(compact(
                 'legalProceeding',
                 'lawsuits',
                 'lawsuitTypes',
                 'uf',
+                'title',
+                'breadcrumb',
             ));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
@@ -75,11 +79,15 @@ class LegalProceedingController extends Controller
             $uf = $this->ufRepository->all();
             $lawsuits = $this->lawsuitRepository->all();
             $lawsuitTypes = $this->lawsuitTypeRepository->all();
+            $title = "Editar processo judicial";
+            $breadcrumb = "editar";
             return view('admin.legal-proceeding.edit')->with(compact(
                 'legalProceeding',
                 'lawsuits',
                 'lawsuitTypes',
                 'uf',
+                'title',
+                'breadcrumb',
             ));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
@@ -95,6 +103,8 @@ class LegalProceedingController extends Controller
             $lawsuitTypes = $this->lawsuitTypeRepository->all();
             $disabled = 'disabled';
             $blocked =  'disabled';
+            $title = "Ver processo judicial";
+            $breadcrumb = "ver";
             return view('admin.legal-proceeding.show')->with(compact(
                 'disabled',
                 'blocked',
@@ -102,6 +112,8 @@ class LegalProceedingController extends Controller
                 'lawsuits',
                 'lawsuitTypes',
                 'uf',
+                'title',
+                'breadcrumb',
             ));
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
@@ -166,10 +178,8 @@ class LegalProceedingController extends Controller
             $lawsuits = $this->lawsuitRepository->all();
             $lawsuitTypes = $this->lawsuitTypeRepository->all();
             $disabled = 'disabled';
-            $showNumber = true;
             return view('admin.legal-proceeding.show')->with(compact(
                 'disabled',
-                'showNumber',
                 'legalProceeding',
                 'lawsuits',
                 'lawsuitTypes',
@@ -194,11 +204,39 @@ class LegalProceedingController extends Controller
         }
     }
 
-    private function imageLogo() {
-        $path = 'logo.png';
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $data = file_get_contents($path);
-        return 'data:image/' . $type . ';base64,' . base64_encode($data);
+    public function upload()
+    {
+        try {
+            return view('admin.legal-proceeding.upload');
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
+    }
+
+    public function uploaded(Request $request)
+    {
+        try {
+            if($request->hasFile('file')) {
+                $destinationPath = 'files/';
+                $extension = $request->file('file')->getClientOriginalExtension();
+                $validextensions = array("pdf");
+
+                if(in_array(strtolower($extension), $validextensions)){
+                    $original_name = $request->file('file')->getClientOriginalName();
+                    $uploaded_name = microtime() .'.' . $extension;
+
+                    $legalProceedingAttachedFile = new LegalProceedingAttachedFile();
+                    $legalProceedingAttachedFile->legal_proceeding_id = 1;
+                    $legalProceedingAttachedFile->original_name = $original_name;
+                    $legalProceedingAttachedFile->uploaded_name = $uploaded_name;
+                    $this->legalProceedingAttachedFileRepository->save($legalProceedingAttachedFile);
+
+                    $request->file('file')->move($destinationPath, $uploaded_name);
+                }
+            }
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
     }
 
 }

@@ -10,8 +10,8 @@ class LegalProceedingAttachedFile extends Model
 
     protected $fillable = [
         'legal_proceeding_id',
-        'name',
-        'extension',
+        'original_name',
+        'upload_name',
     ];
 
     public function legalProceeding()

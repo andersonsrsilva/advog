@@ -25,7 +25,7 @@
                 <form action={{ route ('admin.legal-proceeding.update', $legalProceeding->id) }} method="POST">
                     @method('PUT')
 
-                    @include('admin.legal-proceeding.form')
+                    @include('admin.legal-proceeding.wizard')
 
                     <div class="row">
                         <div class="col-md-6 col-sm-6 offset-md-3">
@@ -44,5 +44,5 @@
 
 @section('scripts')
     @parent
-    {{ Html::script(mix('assets/admin/js/legal-proceeding/create.js')) }}
+    {{ Html::script(mix('assets/admin/js/legal-proceeding/wizard.js')) }}
 @endsection

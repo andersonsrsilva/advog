@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('usuarios/{user}', 'UserController@update')->name('users.update');
     Route::any('usuarios/excluir', 'UserController@destroy')->name('users.destroy');
 
+
+    Route::get('processos/upload', 'LegalProceedingController@upload')->name('legal-proceeding.upload');
+    Route::post('processos/uploaded', 'LegalProceedingController@uploaded')->name('legal-proceeding.upload.store');
+
     Route::get('processos', 'LegalProceedingController@index')->name('legal-proceeding');
     Route::get('processos/novo', 'LegalProceedingController@create')->name('legal-proceeding.create');
     Route::post('processos/salvar', 'LegalProceedingController@store')->name('legal-proceeding.store');
