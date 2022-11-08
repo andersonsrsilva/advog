@@ -148,7 +148,7 @@ class CustomerController extends Controller
 
     public function findPerCpf($cpf)
     {
-        return $this->json($this->customerRepository->findPerCpf($cpf));
+        return $this->json($this->customerRepository->findPerCpf(StringUtils::clean($cpf)));
     }
 
 }

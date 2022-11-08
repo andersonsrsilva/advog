@@ -1,5 +1,5 @@
 (function ($) {
-    //$('#cpf').inputmask("999.999.999-99");
+    $('#cpf').inputmask("999.999.999-99");
 
     var idCustomer = 1000;
 
@@ -64,12 +64,19 @@
     $("#buildPDF").on("click", function(e) {
         e.preventDefault();
 
+        form = new FormData();
+        form.append('lawsuit_id', $("#lawsuit_id").val());
+
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
+        });
         jQuery.ajax({
-            url: "/admin/processos/" + $("#id-lawsuit").val() + "/pdf",
-            method: 'get',
+            url: "/admin/processos/salvar",
+            method: 'post',
             cache: false,
             contentType: false,
             processData: false,
+            data: form,
             xhrFields: {
                 responseType: 'blob'
             },

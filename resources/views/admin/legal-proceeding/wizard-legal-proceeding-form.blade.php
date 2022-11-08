@@ -76,7 +76,7 @@
         <label for="names">Qualificação das partes<span class="required">*</span></label>
 
         <div class="input-group">
-            <input type="text" id="cpf" class="form-control" maxlength="11">
+            <input type="text" id="cpf" class="form-control">
             <span class="input-group-btn">
                 <a type="button" id="findCustomer" class="btn btn-success">Buscar</a>
             </span>

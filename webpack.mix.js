@@ -115,11 +115,6 @@ mix.scripts([
 mix.scripts([
     'node_modules/jquery-maskmoney/dist/jquery.maskmoney.min.js',
     'node_modules/inputmask/dist/jquery.inputmask.min.js',
-    'resources/assets/admin/js/legal-proceeding/create.js',
-], 'public/assets/admin/js/legal-proceeding/create.js').version();
-
-
-mix.scripts([
     'node_modules/gentelella/vendors/nprogress/nprogress.js',
     'node_modules/gentelella/vendors/fastclick/lib/fastclick.js',
     'node_modules/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js',
