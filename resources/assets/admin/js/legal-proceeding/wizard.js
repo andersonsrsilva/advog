@@ -122,7 +122,7 @@ function init_SmartWizard() {
         labelPrevious:'Anterior', // label for Previous button
         labelFinish:'Finalizar',  // label for Finish button
         noForwardJumping:false,
-        onLeaveStep: null, // triggers when leaving a step
+        onLeaveStep: onLeaveStep, // triggers when leaving a step
         onShowStep: null,  // triggers when showing a step
         onFinish: null  // triggers when Finish button is clicked
     });
@@ -147,6 +147,33 @@ function removeCustomer($id) {
     while (elements[0]) elements[0].parentNode.removeChild(elements[0])
 }
 
+function onLeaveStep(obj, context) {
+
+    console.log("AQUI");
+
+    if (context.fromStep == 1 && context.toStep == 2) {
+        tinymce.triggerSave(true);
+
+        let form = $("#legal-proceeding-form");
+
+        $.ajax({
+            type: "POST",
+            url: form.attr('action'),
+            data: form.serialize(),
+            async: false,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+                return false;
+            }
+        });
+    }
+
+    return true;
+}
+
 function onFinish() {
     window.location = window.location.href;
 }
@@ -161,6 +188,7 @@ var myDropzone = new Dropzone("#image-upload", {
     maxFilesize: 3,
     thumbnailWidth: 200,
     acceptedFiles: ".pdf",
+    dictDefaultMessage: "Clique para selecionar seus arquivos"
 });
 
 myDropzone.on("sending", function(file, xhr, formData) {

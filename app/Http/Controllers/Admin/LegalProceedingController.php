@@ -17,6 +17,7 @@ use App\Repositories\LegalProceedingRepository;
 use App\Repositories\UfRepository;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Session;
 
 class LegalProceedingController extends Controller
 {
@@ -53,6 +54,7 @@ class LegalProceedingController extends Controller
     public function create()
     {
         try {
+            Session::put('id', 'undefined');
             $legalProceeding = new LegalProceeding;
             $uf = $this->ufRepository->all();
             $lawsuits = $this->lawsuitRepository->all();
@@ -131,7 +133,6 @@ class LegalProceedingController extends Controller
     public function store(LegalProceedingRequest $request)
     {
         try {
-            dd($request);
             $legalProceeding = new LegalProceeding;
             $legalProceeding->lawsuit_id = $request->lawsuit_id;
             $legalProceeding->lawsuit_type_id = $request->lawsuit_type_id;
@@ -157,11 +158,15 @@ class LegalProceedingController extends Controller
                 $this->legalProceedingCustomersRepository->save($legalProceedingCustomers);
             }
 
-            $dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
+            Session::put('id', $legalProceeding->id);
+
+            return $legalProceeding;
+
+            //$dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
 
             //Storage::put('public/epermit.pdf', $pdf->output());
 
-            $dompdf->stream();
+            //$dompdf->stream();
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
@@ -199,6 +204,32 @@ class LegalProceedingController extends Controller
     {
         try {
             return view('admin.legal-proceeding.upload');
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
+    }
+
+    public function uploaded(Request $request)
+    {
+        try {
+            if($request->hasFile('file')) {
+                $destinationPath = 'files/';
+                $extension = $request->file('file')->getClientOriginalExtension();
+                $validextensions = array("pdf");
+
+                if(in_array(strtolower($extension), $validextensions)){
+                    $original_name = $request->file('file')->getClientOriginalName();
+                    $uploaded_name = microtime() .'.' . $extension;
+
+                    $legalProceedingAttachedFile = new LegalProceedingAttachedFile();
+                    $legalProceedingAttachedFile->legal_proceeding_id = Session::get('id');
+                    $legalProceedingAttachedFile->original_name = $original_name;
+                    $legalProceedingAttachedFile->uploaded_name = $uploaded_name;
+                    $this->legalProceedingAttachedFileRepository->save($legalProceedingAttachedFile);
+
+                    $request->file('file')->move($destinationPath, $uploaded_name);
+                }
+            }
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }

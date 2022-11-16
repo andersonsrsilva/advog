@@ -58,7 +58,9 @@
                     </ul>
                     <br/><br/>
                     <div id="step-1">
-                        @include('admin.legal-proceeding.wizard-legal-proceeding-form')
+                        <form id="legal-proceeding-form" action={{ route ('admin.legal-proceeding.store') }} method="POST">
+                            @include('admin.legal-proceeding.wizard-legal-proceeding-form')
+                        </form>
                     </div>
                     <div id="step-2">
                         @include('admin.legal-proceeding.wizard-upload-form')

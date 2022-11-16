@@ -48,10 +48,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('processos', 'LegalProceedingController@index')->name('legal-proceeding');
     Route::get('processos/novo', 'LegalProceedingController@create')->name('legal-proceeding.create');
-    Route::post('processos/salvar', 'LegalProceedingController@store')->name('legal-proceeding.store');
     Route::get('processos/{id}', 'LegalProceedingController@show')->name('legal-proceeding.show');
     Route::get('processos/{id}/editar', 'LegalProceedingController@edit')->name('legal-proceeding.edit');
     Route::put('processos/{id}', 'LegalProceedingController@update')->name('legal-proceeding.update');
     Route::delete('processos/excluir', 'LegalProceedingController@destroy')->name('legal-proceeding.destroy');
     Route::get('processos/{id}/incluir-numero-processo', 'LegalProceedingController@number')->name('legal-proceeding.number');
+    Route::post('processos/salvar', 'LegalProceedingController@store')->name('legal-proceeding.store');
 });
