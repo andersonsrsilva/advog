@@ -1,7 +1,5 @@
 @csrf
 
-<input type="hidden" id="id-lawsuit" value="{{$legalProceeding->id}}" />
-
 <div class="row">
     <div class="form-group col-md-6">
         <label for="number_lawsuit">Número do processo<span class="required">*</span></label>

@@ -64,19 +64,13 @@
     $("#buildPDF").on("click", function(e) {
         e.preventDefault();
 
-        form = new FormData();
-        form.append('lawsuit_id', $("#lawsuit_id").val());
+        let form = $("#legal-proceeding-download-form");
 
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')}
-        });
         jQuery.ajax({
-            url: "/admin/processos/salvar",
-            method: 'post',
+            url: form.attr('action'),
+            method: 'POST',
             cache: false,
-            contentType: false,
-            processData: false,
-            data: form,
+            data: form.serialize(),
             xhrFields: {
                 responseType: 'blob'
             },
@@ -86,10 +80,10 @@
             success: function(result) {
                 let link=document.createElement('a');
                 link.href=window.URL.createObjectURL(result);
-                link.download="PROCESSO_" + $("#id-lawsuit").val() + ".pdf";
+                link.download="PROCESSO_" + $("#id-legalProceeding").val() + ".pdf";
                 link.click();
             },
-            error: function (request) {
+            error: function (err) {
                 console.log("Error buildPDF")
             },
             complete: function() {
@@ -148,25 +142,28 @@ function removeCustomer($id) {
 }
 
 function onLeaveStep(obj, context) {
-
-    console.log("AQUI");
-
     if (context.fromStep == 1 && context.toStep == 2) {
         tinymce.triggerSave(true);
 
         let form = $("#legal-proceeding-form");
 
-        $.ajax({
+        jQuery.ajax({
             type: "POST",
             url: form.attr('action'),
             data: form.serialize(),
             async: false,
-            success: function (data) {
-                console.log(data);
+            beforeSend: function () {
+                $('#loader').show();
+            },
+            success: function (result) {
+                $("#id-legalProceeding").val(result.id);
             },
             error: function(err) {
                 console.log(err);
                 return false;
+            },
+            complete: function() {
+                $('#loader').hide();
             }
         });
     }

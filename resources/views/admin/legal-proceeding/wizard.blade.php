@@ -58,15 +58,18 @@
                     </ul>
                     <br/><br/>
                     <div id="step-1">
-                        <form id="legal-proceeding-form" action={{ route ('admin.legal-proceeding.store') }} method="POST">
+                        <form id="legal-proceeding-form" action={{ route ('admin.legal-proceeding.store') }}>
                             @include('admin.legal-proceeding.wizard-legal-proceeding-form')
+                            <input type="hidden" id="id-legalProceeding" name="id-legalProceeding">
                         </form>
                     </div>
                     <div id="step-2">
                         @include('admin.legal-proceeding.wizard-upload-form')
                     </div>
                     <div id="step-3">
-                        @include('admin.legal-proceeding.wizard-download-form')
+                        <form id="legal-proceeding-download-form" action={{ route ('admin.legal-proceeding.buildPDF') }}>
+                            @include('admin.legal-proceeding.wizard-download-form')
+                        </form>
                     </div>
                     <div id="step-4">
                         @include('admin.legal-proceeding.wizard-legal-proceeding-number-form')

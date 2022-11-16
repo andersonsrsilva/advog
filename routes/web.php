@@ -54,4 +54,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('processos/excluir', 'LegalProceedingController@destroy')->name('legal-proceeding.destroy');
     Route::get('processos/{id}/incluir-numero-processo', 'LegalProceedingController@number')->name('legal-proceeding.number');
     Route::post('processos/salvar', 'LegalProceedingController@store')->name('legal-proceeding.store');
+    Route::post('processos/gerar-pdf', 'LegalProceedingController@buildPDF')->name('legal-proceeding.buildPDF');
 });

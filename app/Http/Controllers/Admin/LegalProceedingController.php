@@ -161,12 +161,6 @@ class LegalProceedingController extends Controller
             Session::put('id', $legalProceeding->id);
 
             return $legalProceeding;
-
-            //$dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
-
-            //Storage::put('public/epermit.pdf', $pdf->output());
-
-            //$dompdf->stream();
         } catch (Exception $e) {
             return back()->withFlashDanger($e->getMessage());
         }
@@ -235,4 +229,18 @@ class LegalProceedingController extends Controller
         }
     }
 
+    public function buildPDF()
+    {
+        try {
+            $legalProceeding = $this->legalProceedingRepository->find(Session::get('id'));
+
+            $dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
+
+            //Storage::put('public/epermit.pdf', $pdf->output());
+
+            return $dompdf->stream();
+        } catch (Exception $e) {
+            return back()->withFlashDanger($e->getMessage());
+        }
+    }
 }
