@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\StringUtils;
+use App\Helpers\MoneyUtils;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LegalProceedingRequest;
 use App\Models\LegalProceeding;
@@ -145,7 +145,7 @@ class LegalProceedingController extends Controller
             $legalProceeding->fact_description = $request->fact_description;
             $legalProceeding->right_description = $request->right_description;
             $legalProceeding->order_description = $request->order_description;
-            $legalProceeding->value_lawsuit = StringUtils::cleanMoney($request->value_lawsuit);
+            $legalProceeding->value_lawsuit = MoneyUtils::cleanMoney($request->value_lawsuit);
             $legalProceeding = $this->legalProceedingRepository->save($legalProceeding);
 
             foreach ($request->customers as $customer) {
@@ -233,8 +233,9 @@ class LegalProceedingController extends Controller
     {
         try {
             $legalProceeding = $this->legalProceedingRepository->find(Session::get('id'));
+            $money = MoneyUtils::money($legalProceeding->value_lawsuit);
 
-            $dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding'));
+            $dompdf = PDF::loadView('admin.legal-proceeding.pdf', compact('legalProceeding', 'money'));
 
             //Storage::put('public/epermit.pdf', $pdf->output());
 
